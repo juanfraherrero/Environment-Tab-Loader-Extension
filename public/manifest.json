@@ -5,7 +5,8 @@
   "description": "Configure your enviroments, load a new window with the specified tabs of your environment. Also clear all tabs and windows and load only a windows with the tabs of your environment",
   "permissions": [
     "storage",
-    "tabs"
+    "tabs",
+    "scripting"
   ],
   "background": {
     "service_worker": "background.js"
@@ -32,7 +33,7 @@
       "suggested_key": {
         "default": "Ctrl+Shift+1",
         "mac": "Command+Shift+1",
-        "windows":"Alt+Shift+1"
+        "windows": "Alt+Shift+1"
       },
       "description": "Abre las páginas configuradas en una nueva ventana"
     },
@@ -40,10 +41,24 @@
       "suggested_key": {
         "default": "Ctrl+Shift+0",
         "mac": "Command+Shift+0",
-        "windows":"Alt+Shift+0"
+        "windows": "Alt+Shift+0"
       },
       "description": "Cierra todas las pestañas y abre una nueva ventana con las páginas configuradas"
     }
   },
-  "options_page": "options.html"
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "popup.html",
+        "options.html",
+        "popup.css",
+        "options.css",
+        "assets/*.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
 }

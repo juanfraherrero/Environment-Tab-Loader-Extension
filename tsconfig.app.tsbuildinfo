@@ -1,0 +1,1 @@
+{"root":["./src/Popup/main.tsx","./src/Popup/popup.tsx","./src/options/main.tsx","./src/options/options.tsx","./src/options/subComponents/AddEnviromentsSection.tsx","./src/options/subComponents/SelectEnvironmentSection.tsx","./src/options/subComponents/TabsForEnvironmentSection.tsx","./src/types/Environment.ts"],"version":"5.6.3"}
