@@ -46,3 +46,7 @@ This project is licensed under the MIT Licenses
 ## Colaborate
 
 Feel free to colaborate with the developer and [donate a cafecito ($)](https://cafecito.app/juanfraherrero)
+
+TODO
+
+no se está actualizando al editar ni al borrar!

@@ -1,4 +1,13 @@
+import {
+  Select,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+} from "@/components/ui/select";
 import { Environments } from "../../types/Environment";
+import { Button } from "@/components/ui/button";
+
 
 interface SelectEnvironmentSectionProps {
   environments: Environments;
@@ -14,21 +23,23 @@ export default function SelectEnvironmentSection({
   handleDeleteEnvironment,
 }: SelectEnvironmentSectionProps) {
   return (
-    <div className="sections">
-      <label>Select environment:</label>
-      <select
-        id="envSelect"
+    <div className="w-[80%] mx-auto flex items-center mb-10">
+      <Select
         value={selectedEnv || ''}
-        onChange={(e) => { handleChangeEnvironment(e.target.value) }}
+        onValueChange={(value) => { handleChangeEnvironment(value) }}
       >
-        <option value="" disabled>Select an environment</option>
-        {Object.keys(environments).sort().map((env, idx) => (
-          <option key={idx} value={env}>
-            {env}
-          </option>
-        ))}
-      </select>
-      <button onClick={handleDeleteEnvironment}>Delete</button>
+        <SelectTrigger >
+          <SelectValue placeholder="Select environment" />
+        </SelectTrigger>
+        <SelectContent className="overflow-y-auto max-h-[75vh]">
+          {Object.keys(environments).sort().map((env, idx) => (
+            <SelectItem key={idx} value={env}>
+              {env}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+      <Button className="px-4 py-2 ml-2" type="button" variant="destructive" onClick={() => handleDeleteEnvironment}>Delete</Button>
     </div>
   );
 };

@@ -36,6 +36,11 @@ export default function OptionsPage() {
     loadEnvironments();
   }, []);
 
+  // Load environments when the component is mounted
+  useEffect(() => {
+    if (selectedEnv) loadPages(selectedEnv);
+  }, [loadPages, selectedEnv]);
+
   const handleAddEnvironment = useCallback((envName: string) => {
     if (envName) {
       if (Object.keys(environments).length < 9) {
@@ -61,10 +66,49 @@ export default function OptionsPage() {
 
   const handleAddPage = () => {
     if (newPageUrl && selectedEnv) {
+      if (environments[selectedEnv].find((tabUrl) => newPageUrl === tabUrl)) {
+        alert("Url already exists in environment");
+        return;
+      }
       const updatedEnvs = { ...environments }; // shallow copy to change ref and re-render
       updatedEnvs[selectedEnv].push(newPageUrl);
       chrome.storage.sync.set({ environments: updatedEnvs }, () => {
         setNewPageUrl('');
+        loadPages(selectedEnv);
+      });
+    }
+  };
+  const handleDeletePage = (urlToDelete: string) => {
+    console.log(urlToDelete);
+    console.log(selectedEnv);
+    if (urlToDelete && selectedEnv) {
+      const updatedEnvs = { ...environments }; // shallow copy to change ref and re-render
+      console.log(updatedEnvs[selectedEnv])
+      updatedEnvs[selectedEnv] = updatedEnvs[selectedEnv].filter((urlEnv) => urlEnv !== urlToDelete)
+      console.log(updatedEnvs[selectedEnv])
+      chrome.storage.sync.set({ environments: updatedEnvs }, () => {
+        loadPages(selectedEnv);
+      });
+    }
+  };
+  const handleEditPage = (urlToEdit: string, newUrl: string) => {
+    console.log(urlToEdit);
+    console.log(selectedEnv);
+
+    if (urlToEdit && selectedEnv) {
+      const updatedEnvs = { ...environments }; // shallow copy to change ref and re-render
+
+      console.log(updatedEnvs[selectedEnv]);
+
+      updatedEnvs[selectedEnv] = updatedEnvs[selectedEnv].map((urlEnv) => {
+        if (urlEnv === urlToEdit) {
+          return newUrl
+        }
+        return urlEnv
+      })
+      console.log(updatedEnvs[selectedEnv]);
+
+      chrome.storage.sync.set({ environments: updatedEnvs }, () => {
         loadPages(selectedEnv);
       });
     }
@@ -77,7 +121,11 @@ export default function OptionsPage() {
 
   return (
     <div>
-      <h1>Configure Environments</h1>
+      <h1
+        className='text-center mt-3 mb-5 scroll-m-20 text-2xl font-extrabold tracking-tight'
+      >
+        Configure Environments
+      </h1>
 
       <AddEnvironmentSection
         handleAddEnvironment={handleAddEnvironment}
@@ -95,7 +143,10 @@ export default function OptionsPage() {
           newPageUrl={newPageUrl}
           setNewPageUrl={setNewPageUrl}
           handleAddPage={handleAddPage}
+          handleDeletePage={handleDeletePage}
+          handleEditPage={handleEditPage}
           pages={pages}
+
         />
       )}
     </div>

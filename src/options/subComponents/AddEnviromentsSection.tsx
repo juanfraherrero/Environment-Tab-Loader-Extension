@@ -1,3 +1,5 @@
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { memo, useState } from "react";
 
 interface AddEnvironmentSectionProps {
@@ -9,17 +11,22 @@ const AddEnvironmentSection = memo(({
 }: AddEnvironmentSectionProps) => {
   const [envName, setEnvName] = useState<string>('');
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleAddEnvironment(envName)
+    }
+  }
+
   return (
-    <div className="sections">
-      <label htmlFor="newEnvName">New environment:</label>
-      <input
-        type="text"
-        id="newEnvName"
-        placeholder="Name of the new environment"
-        value={envName}
+    <div className="w-[80%] mx-auto flex items-center mb-5">
+      <Input id="name" type="text" placeholder="New environment" value={envName}
         onChange={(e) => setEnvName(e.target.value)}
+        onKeyUp={handleKeyDown}
+        className="px-4 py-2 w-full"
       />
-      <button onClick={() => handleAddEnvironment(envName)}>Add environment</button>
+      <Button
+        type="button" onClick={() => handleAddEnvironment(envName)}
+        className="px-4 py-2 ml-2">Add</Button>
     </div>
   );
 });
