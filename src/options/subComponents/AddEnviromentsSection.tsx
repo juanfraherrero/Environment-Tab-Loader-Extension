@@ -14,6 +14,7 @@ const AddEnvironmentSection = memo(({
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleAddEnvironment(envName)
+      setEnvName("");
     }
   }
 

@@ -50,3 +50,10 @@ Feel free to colaborate with the developer and [donate a cafecito ($)](https://c
 TODO
 
 no se está actualizando al editar ni al borrar!
+
+Add i18n
+Add night and day themes
+Cambiar Fuente por alguna copada
+Expandir en vertical para que ocupe todo lo que pueda los tabs
+
+Agregfar el Popup y que se borre

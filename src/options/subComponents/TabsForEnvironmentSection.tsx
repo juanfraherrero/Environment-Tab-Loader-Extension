@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose
 } from "@/components/ui/dialog";
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
@@ -64,11 +65,20 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
                       <Label htmlFor="name" className="text-right">
                         URL
                       </Label>
-                      <Input id="name" value={urlDialog} onChange={(e) => { console.log("onchange input dialog ->", urlDialog); setUrlDialog(e.target.value) }} className="w-full" />
+                      <Input id="name" value={urlDialog}
+                        onChange={(e) => {
+                          console.log("onchange input dialog ->", urlDialog);
+                          setUrlDialog(e.target.value)
+                        }}
+                        className="w-full" />
                     </div>
                     <DialogFooter className="w-full flex flex-row flex-nowrap justify-around" >
-                      <Button type="button" variant="default" onClick={() => handleEditPage(urlDialog, page)}>Save</Button>
-                      <Button type="button" variant="destructive" onClick={() => handleDeletePage(page)}>Delete</Button>
+                      <DialogClose asChild>
+                        <Button type="button" variant="default" onClick={() => handleEditPage(urlDialog, page)}>Save</Button>
+                      </DialogClose>
+                      <DialogClose asChild>
+                        <Button type="button" variant="destructive" onClick={() => handleDeletePage(page)}>Delete</Button>
+                      </DialogClose>
                     </DialogFooter>
                   </DialogContent>
 

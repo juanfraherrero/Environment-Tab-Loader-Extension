@@ -39,7 +39,7 @@ export default function SelectEnvironmentSection({
           ))}
         </SelectContent>
       </Select>
-      <Button className="px-4 py-2 ml-2" type="button" variant="destructive" onClick={() => handleDeleteEnvironment}>Delete</Button>
+      <Button className="px-4 py-2 ml-2" type="button" variant="destructive" onClick={handleDeleteEnvironment}>Delete</Button>
     </div>
   );
 };
