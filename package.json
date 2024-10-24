@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && cp scripts/background.js dist/background.js",
+    "build:l": "tsc -b && vite build && cp scripts/background.js dist/background.js",
+    "build:w": "tsc -b && vite build && copy scripts\\background.js dist\\background.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
