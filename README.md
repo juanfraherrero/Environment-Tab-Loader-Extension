@@ -49,11 +49,48 @@ Feel free to colaborate with the developer and [donate a cafecito ($)](https://c
 
 TODO
 
-no se está actualizando al editar ni al borrar!
+# Project Tasks
 
-Add i18n
-Add night and day themes
-Cambiar Fuente por alguna copada
-Expandir en vertical para que ocupe todo lo que pueda los tabs
+### Status Key
 
-Agregfar el Popup y que se borre
+- **Open**: The task is yet to be started.
+- **In Progress**: The task is actively being worked on.
+- **Closed**: The task has been completed.
+
+### 🚀 Upcoming Features / Bugs / Tasks
+
+| Ticket ID | Description                                                    | Priority | Status | Assignee |
+| --------- | -------------------------------------------------------------- | -------- | ------ | -------- |
+| TICKET-01 | Add i18n                                                       | Medium   | Open   | @DevTeam |
+| TICKET-02 | Add night and day themes                                       | Medium   | Open   | @DevTeam |
+| TICKET-03 | Expandir en vertical para que ocupe todo lo que pueda los tabs | High     | Open   | @DevTeam |
+| TICKET-04 | Agregar Popup y que se cierre la ventana                       | High     | Open   | @DevTeam |
+
+### 📝 Detailed Tickets
+
+<!-- ---
+
+#### TICKET-01: Fix login authentication bug
+
+- **Description**: There's an issue with the login functionality where users are unable to log in after password reset.
+- **Priority**: High
+- **Status**: In Progress
+- **Assigned to**: @JohnDoe
+- **Due Date**: 2024-11-01
+- **Notes**:
+  - Investigate how the password reset token is being stored.
+  - Check session handling after password reset.
+  - Ensure proper error messaging when authentication fails.
+
+---
+
+#### TICKET-02: Add dark mode to the UI
+
+- **Description**: Implement a dark theme for the application. Allow users to toggle between light and dark mode.
+- **Priority**: Medium
+- **Status**: Open
+- **Assigned to**: @JaneSmith
+- **Due Date**: 2024-12-15
+- **Notes**:
+  - Update the CSS.
+  - Make sure accessibility requirements are met (contrast ratios, etc.). -->

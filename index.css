@@ -64,7 +64,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    @apply min-w-[450px];
-    @apply min-h-[450px];
+    /* @apply min-w-[450px];
+    @apply min-h-[450px]; */
   }
 }
