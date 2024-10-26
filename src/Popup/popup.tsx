@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Environments } from "../types/Environment";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function PopupPage() {
   const [enviroments, setEnvironments] = useState<Environments>({});
   const [command, setCommand] = useState<string>("");
+  const { toast } = useToast();
 
   useEffect(() => {
     window.focus();
@@ -16,53 +19,81 @@ export default function PopupPage() {
 
     // get environments
     chrome.storage.sync.get(["environments"], (result) => {
+      if (chrome.runtime.lastError) {
+        toast({
+          variant: "destructive",
+          title: "Failed to retrieve environments",
+        });
+      }
+
       const environments: Environments = result.environments || {};
       setEnvironments(environments);
-
-      document.addEventListener("keydown", handleKeyDown);
-
-      // Cleanup the event listener when the component unmounts
-      return () => {
-        document.removeEventListener("keydown", handleKeyDown);
-      };
     });
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, []);
 
-  //define handle key down
-  const handleKeyDown = (event: KeyboardEvent) => {
-    const key = event.key;
+  /**
+   * Calls background service to open the environment
+   */
+  const openEnvironment = useCallback(
+    (envName: string, command: string) => {
+      const urls = enviroments[envName] || [];
 
-    if (key >= "1" && key <= `${Object.keys(enviroments).length}`) {
-      const buttonIndex = parseInt(key);
-      const selectedEnvironment =
-        Object.keys(enviroments).sort()[buttonIndex - 1]; // Adjust the index since key starts at 1
-      openEnvironment(selectedEnvironment, command);
-    }
-  };
-
-  const openEnvironment = (envName: string, command: string) => {
-    const urls = enviroments[envName] || [];
-
-    if (urls.length > 0) {
-      chrome.runtime.sendMessage(
-        {
-          action: "executeMainFunction",
-          selectedEnv: envName,
-          command: command,
-        },
-        (response) => {
-          if (response?.success) {
-            window.close();
-          } else {
-            console.error("Error calling Bg service");
+      if (urls.length > 0) {
+        chrome.runtime.sendMessage(
+          {
+            action: "executeMainFunction",
+            selectedEnv: envName,
+            command: command,
+          },
+          (response) => {
+            if (response?.success) {
+              window.close();
+            } else {
+              toast({
+                variant: "destructive",
+                title: "Fail app, contact creator",
+              });
+            }
           }
-        }
-      );
-    } else {
-      alert("No hay páginas configuradas para este entorno.");
-    }
-  };
+        );
+      } else {
+        toast({
+          title: "No tabs configured for environment selected",
+        });
+      }
+    },
+    [enviroments, toast]
+  );
 
+  /**
+   * Event handler when key is pressed
+   */
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      const key = event.key;
+
+      if (key >= "1" && key <= `${Object.keys(enviroments).length}`) {
+        const buttonIndex = parseInt(key);
+        const selectedEnvironment =
+          Object.keys(enviroments).sort()[buttonIndex - 1]; // Adjust the index since key starts at 1
+        openEnvironment(selectedEnvironment, command);
+      }
+    },
+    [enviroments, command, openEnvironment]
+  );
+
+  // use effect for add and remove event handlers
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [enviroments, handleKeyDown]);
+
+  // verify if exists environments
   if (Object.keys(enviroments).length == 0) {
     return (
       <>
@@ -95,6 +126,7 @@ export default function PopupPage() {
           );
         })}
       </div>
+      <Toaster />
     </>
   );
 }
