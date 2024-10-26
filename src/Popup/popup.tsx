@@ -51,9 +51,7 @@ export default function PopupPage() {
           command: command,
         },
         (response) => {
-          console.log("recibis en el pop up" + response);
-          if (response?.succes) {
-            console.error("Success calling Bg service - closing");
+          if (response?.success) {
             window.close();
           } else {
             console.error("Error calling Bg service");
