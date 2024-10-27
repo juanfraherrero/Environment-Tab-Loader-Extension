@@ -3,11 +3,32 @@ import { Environments } from "../types/Environment";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
+import { useTranslation } from "react-i18next";
 
 export default function PopupPage() {
   const [enviroments, setEnvironments] = useState<Environments>({});
   const [command, setCommand] = useState<string>("");
   const { toast } = useToast();
+  const {
+    t,
+    i18n: { changeLanguage },
+  } = useTranslation();
+
+  /**
+   * Loads language from chrome storage
+   */
+  const loadLanguages = useCallback(() => {
+    chrome.storage.sync.get(["lng"], (result) => {
+      if (chrome.runtime.lastError) console.error("Failed to fetch language");
+      const lng = result.lng;
+      if (lng) changeLanguage(lng);
+    });
+  }, [changeLanguage]);
+
+  /* Fetch language default */
+  useEffect(() => {
+    loadLanguages();
+  }, [loadLanguages]);
 
   useEffect(() => {
     window.focus();
@@ -52,14 +73,14 @@ export default function PopupPage() {
             } else {
               toast({
                 variant: "destructive",
-                title: "Fail app, contact creator",
+                title: t("error.fail_app"),
               });
             }
           }
         );
       } else {
         toast({
-          title: "No tabs configured for environment selected",
+          title: t("alert.no_tabs_for_env"),
         });
       }
     },
@@ -98,7 +119,7 @@ export default function PopupPage() {
     return (
       <>
         <h1 className="text-center mt-3 mb-5 scroll-m-20 text-2xl font-extrabold tracking-tight">
-          Se debe crear un entorno
+          {t("alert.create_env")}
         </h1>
       </>
     );
@@ -107,7 +128,7 @@ export default function PopupPage() {
   return (
     <>
       <h1 className="text-center mt-3 mb-5 scroll-m-20 text-2xl font-extrabold tracking-tight">
-        Seleccionar Entorno
+        {t("popup_title")}
       </h1>
       <div
         id="environmentsList"

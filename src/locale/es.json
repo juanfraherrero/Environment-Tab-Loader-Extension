@@ -9,10 +9,13 @@
       "add_new_tab": "Error agregando entorno. Contactá al creador!",
       "delete_tab": "Error borrando pestaña del entorno. Contactá al creador!",
       "update_tab": "Error editando pestaña del entorno. Contactá al creador!",
-      "save_language": "Error guardando idioma. No se guardará!"
+      "save_language": "Error guardando idioma. No se guardará!",
+      "fail_app": "Falló la app, Contactá al creador!"
     },
     "alert": {
-      "env_already_exist": "Ya existe la url en el entorno"
+      "env_already_exist": "Ya existe la url en el entorno",
+      "no_tabs_for_env": "No hay pestañas en el entorno elegido",
+      "create_env": "Se debe crear un entorno"
     },
     "confirm": {
       "delete_env": "Estás seguro de borrar el entorno {{env}}?"
@@ -31,6 +34,7 @@
         "title": "Editar pestaña",
         "description": "Cambiar url. Click en Guardar cuando finalizes."
       }
-    }
+    },
+    "popup_title": "Seleccionar Entorno"
   }
 }

@@ -9,10 +9,13 @@
       "add_new_tab": "Error while adding tab to environment. Contact with creator!",
       "delete_tab": "Error while deleting tab from environment. Contact with creator!",
       "update_tab": "Error while updating tab from environment. Contact with creator!",
-      "save_language": "Error saving language. It will not be preserved"
+      "save_language": "Error saving language. It will not be preserved",
+      "fail_app": "Fail app, contact creator"
     },
     "alert": {
-      "env_already_exist": "Url already exists in environment"
+      "env_already_exist": "Url already exists in environment",
+      "no_tabs_for_env": "No tabs configured for environment selected",
+      "create_env": "Must create environment"
     },
     "confirm": {
       "delete_env": "Are you sure to delete environment {{env}}?"
@@ -31,6 +34,7 @@
         "title": "Edit tab",
         "description": "Change url tab. Click save when you're done."
       }
-    }
+    },
+    "popup_title": "Select Environment"
   }
 }
