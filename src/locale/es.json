@@ -1,0 +1,36 @@
+{
+  "translation": {
+    "title": "Configurar Entornos",
+    "error": {
+      "max_quantity": "Máximo 9 entornos",
+      "env_already_exist": "{{env}} ya existe",
+      "create_new_env": "Error creando entorno. Contactá al creador!",
+      "delete_new_env": "Error borrando entorno. Contactá al creador!",
+      "add_new_tab": "Error agregando entorno. Contactá al creador!",
+      "delete_tab": "Error borrando pestaña del entorno. Contactá al creador!",
+      "update_tab": "Error editando pestaña del entorno. Contactá al creador!",
+      "save_language": "Error guardando idioma. No se guardará!"
+    },
+    "alert": {
+      "env_already_exist": "Ya existe la url en el entorno"
+    },
+    "confirm": {
+      "delete_env": "Estás seguro de borrar el entorno {{env}}?"
+    },
+    "button": {
+      "add": "Agregar",
+      "delete": "Borrar",
+      "edit": "Editar",
+      "save": "Guardar",
+      "select_env": "Seleccionar entorno",
+      "new_tab": "URL de la nueva pestaña",
+      "new_env": "Nuevo entorno"
+    },
+    "dialog": {
+      "editTab": {
+        "title": "Editar pestaña",
+        "description": "Cambiar url. Click en Guardar cuando finalizes."
+      }
+    }
+  }
+}

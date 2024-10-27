@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
+import { useTranslation } from "react-i18next";
 
 interface TabsForEnvironmentSectionProps {
   newPageUrl: string;
@@ -31,13 +32,14 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
   pages,
 }) => {
   const [urlDialog, setUrlDialog] = useState<string>("");
+  const { t } = useTranslation();
 
   return (
     <>
       <div className="w-[70%] mx-auto flex items-center mb-5 ">
         <Input
           type="text"
-          placeholder="URL of new tab"
+          placeholder={t("button.new_tab")}
           value={newPageUrl}
           onChange={(e) => setNewPageUrl(e.target.value)}
           onKeyUp={(e) => {
@@ -50,7 +52,7 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
           onClick={handleAddPage}
           className="px-4 py-2 ml-2"
         >
-          Add
+          {t("button.add")}
         </Button>
       </div>
       <div className="w-full mx-auto mb-3 max-h-[300px] overflow-y-scroll">
@@ -58,7 +60,7 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
           return (
             <div
               key={idx}
-              className="w-[70%] border rounded-md pl-0.5 pl-2.5 shadow-md mx-auto mb-3"
+              className="w-[70%] border rounded-md pl-2.5 shadow-md mx-auto mb-3"
             >
               <div className="flex justify-between items-center m-2">
                 <span className="truncate text-center">{page}</span>
@@ -71,14 +73,14 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
                         setUrlDialog(page);
                       }}
                     >
-                      Edit
+                      {t("button.edit")}
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="w-[75%]">
                     <DialogHeader>
-                      <DialogTitle>Edit tab</DialogTitle>
+                      <DialogTitle>{t("dialog.editTab.title")}</DialogTitle>
                       <DialogDescription>
-                        Change url tab. Click save when you're done.
+                        {t("dialog.editTab.description")}
                       </DialogDescription>
                     </DialogHeader>
                     <div className="w-full py-5">
@@ -89,7 +91,6 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
                         id="name"
                         value={urlDialog}
                         onChange={(e) => {
-                          console.log("onchange input dialog ->", urlDialog);
                           setUrlDialog(e.target.value);
                         }}
                         className="w-full"
@@ -102,7 +103,7 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
                           variant="default"
                           onClick={() => handleEditPage(urlDialog, page)}
                         >
-                          Save
+                          {t("button.save")}
                         </Button>
                       </DialogClose>
                       <DialogClose asChild>
@@ -111,7 +112,7 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
                           variant="destructive"
                           onClick={() => handleDeletePage(page)}
                         >
-                          Delete
+                          {t("button.delete")}
                         </Button>
                       </DialogClose>
                     </DialogFooter>

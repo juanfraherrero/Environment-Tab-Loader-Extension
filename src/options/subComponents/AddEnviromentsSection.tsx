@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { memo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface AddEnvironmentSectionProps {
   handleAddEnvironment: (envName: string) => void;
@@ -9,6 +10,7 @@ interface AddEnvironmentSectionProps {
 const AddEnvironmentSection = memo(
   ({ handleAddEnvironment }: AddEnvironmentSectionProps) => {
     const [envName, setEnvName] = useState<string>("");
+    const { t } = useTranslation();
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === "Enter") {
@@ -22,7 +24,7 @@ const AddEnvironmentSection = memo(
         <Input
           id="name"
           type="text"
-          placeholder="New environment"
+          placeholder={t("button.new_env")}
           value={envName}
           onChange={(e) => setEnvName(e.target.value)}
           onKeyUp={handleKeyDown}
@@ -33,7 +35,7 @@ const AddEnvironmentSection = memo(
           onClick={() => handleAddEnvironment(envName)}
           className="px-4 py-2 ml-2"
         >
-          Add
+          {t("button.add")}
         </Button>
       </div>
     );

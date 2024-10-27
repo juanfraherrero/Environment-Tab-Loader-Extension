@@ -5,6 +5,8 @@ import { Environments } from "../types/Environment";
 import AddEnvironmentSection from "./subComponents/AddEnviromentsSection";
 import { useToast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
+import { useTranslation } from "react-i18next";
+import LanguageSelector from "./subComponents/LanguageSelector";
 
 export default function OptionsPage() {
   const [environments, setEnvironments] = useState<Environments>({});
@@ -12,6 +14,10 @@ export default function OptionsPage() {
   const [newPageUrl, setNewPageUrl] = useState<string>("");
   const [pages, setPages] = useState<string[]>([]);
   const { toast } = useToast();
+  const {
+    t,
+    i18n: { changeLanguage, language },
+  } = useTranslation();
 
   /**
    * Load tabs from the environment passed
@@ -55,14 +61,14 @@ export default function OptionsPage() {
       if (envs.length >= 9) {
         // alert("Max quantity of environments is 9");
         toast({
-          title: "Max quantity of environments is 9",
+          title: t("error.max_quantity"),
         });
         return;
       }
       if (envs.includes(envName.toLowerCase())) {
         // alert("Environment " + envName + " already exists");
         toast({
-          title: "Environment " + envName + " already exists",
+          title: t("error.env_already_exist", { env: envName }),
         });
         return;
       }
@@ -75,8 +81,7 @@ export default function OptionsPage() {
           // alert("Error while creating new environment. Contact with creator!");
           toast({
             variant: "destructive",
-            title:
-              "Error while creating new environment. Contact with creator!",
+            title: t("error.create_new_env"),
           });
           return;
         }
@@ -84,17 +89,14 @@ export default function OptionsPage() {
         setEnvironments(updatedEnvs);
       });
     },
-    [environments, toast]
+    [environments, toast, t]
   );
 
   /**
    * Deletes selected environment
    */
   const handleDeleteEnvironment = useCallback(() => {
-    if (
-      selectedEnv &&
-      confirm(`Are you sure to delete environment "${selectedEnv}"?`)
-    ) {
+    if (selectedEnv && confirm(t("confirm.delete_env", { env: selectedEnv }))) {
       const updatedEnvs = { ...environments };
       delete updatedEnvs[selectedEnv];
 
@@ -104,7 +106,7 @@ export default function OptionsPage() {
           // alert("Error while deleting environment. Contact with creator!");
           toast({
             variant: "destructive",
-            title: "Error while deleting environment. Contact with creator!",
+            title: t("error.delete_new_env"),
           });
           return;
         }
@@ -120,7 +122,7 @@ export default function OptionsPage() {
         }
       });
     }
-  }, [environments, selectedEnv, toast]);
+  }, [environments, selectedEnv, toast, t]);
 
   // --- Pages Functions
 
@@ -130,9 +132,8 @@ export default function OptionsPage() {
   const handleAddPage = () => {
     if (newPageUrl && selectedEnv) {
       if (environments[selectedEnv].includes(newPageUrl)) {
-        // alert("Url already exists in environment");
         toast({
-          title: "Url already exists in environment",
+          title: t("alert.env_already_exist"),
         });
         return;
       }
@@ -144,8 +145,7 @@ export default function OptionsPage() {
           // alert("Error while adding tab to environment. Contact with creator!");
           toast({
             variant: "destructive",
-            title:
-              "Error while adding tab to environment. Contact with creator!",
+            title: t("error.add_new_tab"),
           });
           return;
         }
@@ -166,13 +166,9 @@ export default function OptionsPage() {
       );
       chrome.storage.sync.set({ environments: updatedEnvs }, () => {
         if (chrome.runtime.lastError) {
-          // alert(
-          //   "Error while deleting tab from environment. Contact with creator!"
-          // );
           toast({
             variant: "destructive",
-            title:
-              "Error while deleting tab from environment. Contact with creator!",
+            title: t("error.delete_tab"),
           });
           return;
         }
@@ -198,13 +194,9 @@ export default function OptionsPage() {
 
       chrome.storage.sync.set({ environments: updatedEnvs }, () => {
         if (chrome.runtime.lastError) {
-          // alert(
-          //   "Error while updating tab from environment. Contact with creator!"
-          // );
           toast({
             variant: "destructive",
-            title:
-              "Error while updating tab from environment. Contact with creator!",
+            title: t("error.update_tab"),
           });
           return;
         }
@@ -221,6 +213,34 @@ export default function OptionsPage() {
   };
 
   /**
+   * Loads language from chrome storage
+   */
+  const loadLanguages = useCallback(() => {
+    chrome.storage.sync.get(["lng"], (result) => {
+      const lng = result.lng || ("" as string);
+      if (lng) changeLanguage(lng);
+    });
+  }, [changeLanguage]);
+
+  /**
+   * Wraps changeLanguage and store it
+   */
+  const updateLanguage = (lng: string) => {
+    if (!lng) return;
+    changeLanguage(lng);
+    chrome.storage.sync.set({ lng }, () => {
+      if (chrome.runtime.lastError) {
+        // alert("Error while creating new environment. Contact with creator!");
+        toast({
+          variant: "destructive",
+          title: t("error.save_language"),
+        });
+        return;
+      }
+    });
+  };
+
+  /**
    * When the selected env change reload his tabs
    */
   useEffect(() => {
@@ -231,13 +251,14 @@ export default function OptionsPage() {
    * Load all data when mount
    */
   useEffect(() => {
+    loadLanguages();
     loadAll();
-  }, [loadAll]);
+  }, [loadAll, loadLanguages]);
 
   return (
     <div>
       <h1 className="text-center mt-3 mb-5 scroll-m-20 text-2xl font-extrabold tracking-tight">
-        Configure Environments
+        {t("title")}
       </h1>
 
       <AddEnvironmentSection handleAddEnvironment={handleAddEnvironment} />
@@ -260,6 +281,10 @@ export default function OptionsPage() {
         />
       )}
       <Toaster />
+      <LanguageSelector
+        handleChangeLanguage={updateLanguage}
+        currentLanguage={language}
+      ></LanguageSelector>
     </div>
   );
 }
