@@ -3,12 +3,15 @@ import TabsForEnvironmentSection from "./subComponents/TabsForEnvironmentSection
 import SelectEnvironmentSection from "./subComponents/SelectEnvironmentSection";
 import { Environments } from "../types/Environment";
 import AddEnvironmentSection from "./subComponents/AddEnviromentsSection";
+import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function OptionsPage() {
   const [environments, setEnvironments] = useState<Environments>({});
   const [selectedEnv, setSelectedEnv] = useState<string | null>(null);
   const [newPageUrl, setNewPageUrl] = useState<string>("");
   const [pages, setPages] = useState<string[]>([]);
+  const { toast } = useToast();
 
   /**
    * Load tabs from the environment passed
@@ -50,11 +53,17 @@ export default function OptionsPage() {
       const envs = Object.keys(environments).map((e) => e.toLowerCase());
 
       if (envs.length >= 9) {
-        alert("Max quantity of environments is 9");
+        // alert("Max quantity of environments is 9");
+        toast({
+          title: "Max quantity of environments is 9",
+        });
         return;
       }
       if (envs.includes(envName.toLowerCase())) {
-        alert("Environment " + envName + " already exists");
+        // alert("Environment " + envName + " already exists");
+        toast({
+          title: "Environment " + envName + " already exists",
+        });
         return;
       }
 
@@ -63,14 +72,19 @@ export default function OptionsPage() {
       chrome.storage.sync.set({ environments: updatedEnvs }, () => {
         // loadEnvironments(); // do not fetch to storage
         if (chrome.runtime.lastError) {
-          alert("Error while creating new environment. Contact with creator!");
+          // alert("Error while creating new environment. Contact with creator!");
+          toast({
+            variant: "destructive",
+            title:
+              "Error while creating new environment. Contact with creator!",
+          });
           return;
         }
         // Update local state
         setEnvironments(updatedEnvs);
       });
     },
-    [environments]
+    [environments, toast]
   );
 
   /**
@@ -87,7 +101,11 @@ export default function OptionsPage() {
       chrome.storage.sync.set({ environments: updatedEnvs }, () => {
         // loadEnvironments(); // do not fetch to storage
         if (chrome.runtime.lastError) {
-          alert("Error while deleting environment. Contact with creator!");
+          // alert("Error while deleting environment. Contact with creator!");
+          toast({
+            variant: "destructive",
+            title: "Error while deleting environment. Contact with creator!",
+          });
           return;
         }
         // Update local state
@@ -102,7 +120,7 @@ export default function OptionsPage() {
         }
       });
     }
-  }, [environments, selectedEnv]);
+  }, [environments, selectedEnv, toast]);
 
   // --- Pages Functions
 
@@ -112,7 +130,10 @@ export default function OptionsPage() {
   const handleAddPage = () => {
     if (newPageUrl && selectedEnv) {
       if (environments[selectedEnv].includes(newPageUrl)) {
-        alert("Url already exists in environment");
+        // alert("Url already exists in environment");
+        toast({
+          title: "Url already exists in environment",
+        });
         return;
       }
 
@@ -120,7 +141,12 @@ export default function OptionsPage() {
       updatedEnvs[selectedEnv].push(newPageUrl);
       chrome.storage.sync.set({ environments: updatedEnvs }, () => {
         if (chrome.runtime.lastError) {
-          alert("Error while adding tab to environment. Contact with creator!");
+          // alert("Error while adding tab to environment. Contact with creator!");
+          toast({
+            variant: "destructive",
+            title:
+              "Error while adding tab to environment. Contact with creator!",
+          });
           return;
         }
         setNewPageUrl("");
@@ -140,9 +166,14 @@ export default function OptionsPage() {
       );
       chrome.storage.sync.set({ environments: updatedEnvs }, () => {
         if (chrome.runtime.lastError) {
-          alert(
-            "Error while deleting tab from environment. Contact with creator!"
-          );
+          // alert(
+          //   "Error while deleting tab from environment. Contact with creator!"
+          // );
+          toast({
+            variant: "destructive",
+            title:
+              "Error while deleting tab from environment. Contact with creator!",
+          });
           return;
         }
         setEnvironments(updatedEnvs);
@@ -167,9 +198,14 @@ export default function OptionsPage() {
 
       chrome.storage.sync.set({ environments: updatedEnvs }, () => {
         if (chrome.runtime.lastError) {
-          alert(
-            "Error while updating tab from environment. Contact with creator!"
-          );
+          // alert(
+          //   "Error while updating tab from environment. Contact with creator!"
+          // );
+          toast({
+            variant: "destructive",
+            title:
+              "Error while updating tab from environment. Contact with creator!",
+          });
           return;
         }
         setEnvironments(updatedEnvs);
@@ -223,6 +259,7 @@ export default function OptionsPage() {
           pages={pages}
         />
       )}
+      <Toaster />
     </div>
   );
 }
