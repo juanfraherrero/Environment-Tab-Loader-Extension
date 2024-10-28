@@ -61,11 +61,8 @@ TODO
 
 | Ticket ID | Description                                                    | Priority | Status | Assignee |
 | --------- | -------------------------------------------------------------- | -------- | ------ | -------- |
-| TICKET-01 | Add i18n                                                       | Medium   | Open   | @DevTeam |
 | TICKET-02 | Add night and day themes                                       | Medium   | Open   | @DevTeam |
 | TICKET-03 | Expandir en vertical para que ocupe todo lo que pueda los tabs | High     | Open   | @DevTeam |
-| TICKET-04 | Agregar Popup y que se cierre la ventana                       | High     | Open   | @DevTeam |
-| TICKET-05 | Cambiar los console.alert por shadcn i                         | High     | Open   | @DevTeam |
 
 ### 📝 Detailed Tickets
 
