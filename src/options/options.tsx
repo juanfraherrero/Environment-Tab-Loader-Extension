@@ -6,7 +6,6 @@ import AddEnvironmentSection from "./subComponents/AddEnviromentsSection";
 import { useToast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
 import { useTranslation } from "react-i18next";
-import LanguageSelector from "./subComponents/LanguageSelector";
 
 export default function OptionsPage() {
   const [environments, setEnvironments] = useState<Environments>({});
@@ -14,10 +13,7 @@ export default function OptionsPage() {
   const [newPageUrl, setNewPageUrl] = useState<string>("");
   const [pages, setPages] = useState<string[]>([]);
   const { toast } = useToast();
-  const {
-    t,
-    i18n: { changeLanguage, language },
-  } = useTranslation();
+  const { t } = useTranslation();
 
   /**
    * Load tabs from the environment passed
@@ -213,34 +209,6 @@ export default function OptionsPage() {
   };
 
   /**
-   * Loads language from chrome storage
-   */
-  const loadLanguages = useCallback(() => {
-    chrome.storage.sync.get(["lng"], (result) => {
-      const lng = result.lng || ("" as string);
-      if (lng) changeLanguage(lng);
-    });
-  }, [changeLanguage]);
-
-  /**
-   * Wraps changeLanguage and store it
-   */
-  const updateLanguage = (lng: string) => {
-    if (!lng) return;
-    changeLanguage(lng);
-    chrome.storage.sync.set({ lng }, () => {
-      if (chrome.runtime.lastError) {
-        // alert("Error while creating new environment. Contact with creator!");
-        toast({
-          variant: "destructive",
-          title: t("error.save_language"),
-        });
-        return;
-      }
-    });
-  };
-
-  /**
    * When the selected env change reload his tabs
    */
   useEffect(() => {
@@ -251,12 +219,11 @@ export default function OptionsPage() {
    * Load all data when mount
    */
   useEffect(() => {
-    loadLanguages();
     loadAll();
-  }, [loadAll, loadLanguages]);
+  }, [loadAll]);
 
   return (
-    <div>
+    <>
       <h1 className="text-center mt-3 mb-5 scroll-m-20 text-2xl font-extrabold tracking-tight">
         {t("title")}
       </h1>
@@ -281,10 +248,6 @@ export default function OptionsPage() {
         />
       )}
       <Toaster />
-      <LanguageSelector
-        handleChangeLanguage={updateLanguage}
-        currentLanguage={language}
-      ></LanguageSelector>
-    </div>
+    </>
   );
 }

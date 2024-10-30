@@ -9,11 +9,12 @@ interface LanguageSelectorProps {
 const LanguageSelector = memo(
   ({ handleChangeLanguage, currentLanguage }: LanguageSelectorProps) => {
     return (
-      <div className="absolute bottom-0 right-0 p-1 m-0">
+      <div className="p-1 m-0 ">
         <Toggle
           size="sm"
           pressed={currentLanguage === "en"}
           onPressedChange={() => handleChangeLanguage("en")}
+          className="h-[2.25rem] w-[2.25rem]"
         >
           EN
         </Toggle>
@@ -22,6 +23,7 @@ const LanguageSelector = memo(
           size="sm"
           pressed={currentLanguage === "es"}
           onPressedChange={() => handleChangeLanguage("es")}
+          className="h-[2.25rem] w-[2.25rem]"
         >
           ES
         </Toggle>

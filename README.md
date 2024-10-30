@@ -59,36 +59,12 @@ TODO
 
 ### 🚀 Upcoming Features / Bugs / Tasks
 
-| Ticket ID | Description                                                    | Priority | Status | Assignee |
-| --------- | -------------------------------------------------------------- | -------- | ------ | -------- |
-| TICKET-02 | Add night and day themes                                       | Medium   | Open   | @DevTeam |
-| TICKET-03 | Expandir en vertical para que ocupe todo lo que pueda los tabs | High     | Open   | @DevTeam |
-
-### 📝 Detailed Tickets
-
-<!-- ---
-
-#### TICKET-01: Fix login authentication bug
-
-- **Description**: There's an issue with the login functionality where users are unable to log in after password reset.
-- **Priority**: High
-- **Status**: In Progress
-- **Assigned to**: @JohnDoe
-- **Due Date**: 2024-11-01
-- **Notes**:
-  - Investigate how the password reset token is being stored.
-  - Check session handling after password reset.
-  - Ensure proper error messaging when authentication fails.
-
----
-
-#### TICKET-02: Add dark mode to the UI
-
-- **Description**: Implement a dark theme for the application. Allow users to toggle between light and dark mode.
-- **Priority**: Medium
-- **Status**: Open
-- **Assigned to**: @JaneSmith
-- **Due Date**: 2024-12-15
-- **Notes**:
-  - Update the CSS.
-  - Make sure accessibility requirements are met (contrast ratios, etc.). -->
+| ID  | Description                                                                     | Priority | Type    | O/C |
+| --- | ------------------------------------------------------------------------------- | -------- | ------- | --- |
+| 02  | Add night and day themes                                                        | Medium   | Bug     | x   |
+| 03  | Expandir en vertical para que ocupe todo lo que pueda los tabs                  | High     | Feature | x   |
+| 04  | Ajustar el enES en donde no moleste, abajo agregando margin right y sino arriba | High     | Open    | x   |
+| 05  | Que donde estén los tabs que tenga el tamaño restante (flex 1 usar el restante) | High     | Open    | x   |
+| 06  | Add button in options to open popup                                             | Low      | Open    |     |
+| 07  | Add shortcut to add page to specific env                                        | Low      | Open    |     |
+| 08  | Add cafecito                                                                    | Low      | Open    |     |

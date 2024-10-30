@@ -36,7 +36,7 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
 
   return (
     <>
-      <div className="w-[70%] mx-auto flex items-center mb-5 ">
+      <div className="w-[70%] mx-auto flex items-center mb-5 pr-[16px]">
         <Input
           type="text"
           placeholder={t("button.new_tab")}
@@ -55,7 +55,12 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
           {t("button.add")}
         </Button>
       </div>
-      <div className="w-full mx-auto mb-3 max-h-[300px] overflow-y-scroll">
+
+      <div
+        className=" flex-grow w-full mx-auto overflow-y-auto 
+        scrollbar-thin scrollbar-thumb-primary scrollbar-track-transparent 
+       scrollbar-thumb-rounded-full"
+      >
         {pages.map((page, idx) => {
           return (
             <div

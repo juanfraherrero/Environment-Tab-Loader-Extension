@@ -25,7 +25,7 @@ export default function SelectEnvironmentSection({
   const { t } = useTranslation();
 
   return (
-    <div className="w-[80%] mx-auto flex items-center mb-10">
+    <div className="w-[80%] mx-auto flex items-center mb-5">
       <Select
         value={selectedEnv || ""}
         onValueChange={(value) => {
