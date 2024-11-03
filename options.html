@@ -1,78 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/index.css">
   <title>Configurar Entornos</title>
   <style>
-    * {
-      margin: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: Arial, sans-serif;
       min-width: 450px;
-      padding: 10px;
+      min-height: 450px;
+      height: 600px;
     }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .sections {
-      margin-bottom: 10px;
-    }
-
-    .tabsForEnv {
-      margin-top: 30px;
-    }
-
-    .tabsForEnv>h3 {
-      margin-bottom: 5px;
-    }
-
-    #pagesList {
-      padding: 0;
-    }
-
-    #pagesList>li {
-      margin: 5px 0;
-      list-style: none;
-    }
-
-    #deleteEnvBtn {
-      margin-left: 30px;
+    #root {
+      height: 100vh;
     }
   </style>
 </head>
 
 <body>
-  <h1>Configure Enviroments</h1>
-
-  <div class="sections">
-    <label for="newEnvName">New enviroment:</label>
-    <input type="text" id="newEnvName" placeholder="Name of the new enviroment">
-    <button id="addEnvBtn">Add enviroment</button>
-  </div>
-
-  <div class="sections">
-    <label>Select enviroment:</label>
-    <select id="envSelect"></select>
-    <button id="deleteEnvBtn">Delete</button>
-  </div>
-
-  <div class="sections tabsForEnv">
-    <h3>Tabs for the enviroment selected</h3>
-    <input type="text" id="newPageUrl" placeholder="URL of new tab">
-    <button id="addPageBtn">Add tab</button>
-
-    <ul id="pagesList"></ul>
-  </div>
-
-  <script src="options.js"></script>
+  <div id="root" class="flex flex-col"></div>
+  <script type="module" src="/src/options/main.tsx"></script>
 </body>
 
 </html>
