@@ -7,20 +7,19 @@
 **Main features:**
 
 - Load preconfigured environments in new Chrome windows.
-- Clear all open tabs and load only the ones from the selected environment.
+- Can clear all already open tabs and load only the ones from the selected environment.
 - Support for keyboard shortcuts to quickly select environments.
-
-## Installation from GitHub (Currently only way)
-
-- Download the _.crx_ file in root direcory
-- Go to chrome://extensions/ in the address bar or the respective extension manager in your browser
-- Enable "Developer mode" in the top right corner
-- Move the .crx from your folder to the extensions tab and install it
 
 ## Demo and fast overview
 
 - [English Demo](ss)
 - [Spanish Demo](ss)
+
+## Installation from GitHub (Currently only way)
+
+- Clone repo
+- Open chrome extensions and enable "Developer mode" in the top right corner
+- Click on "load without packaging" or "Cargar sin empaquetar" and select the root folder of repository
 
 ### Getting Started:
 
@@ -47,24 +46,22 @@ This project is licensed under the MIT Licenses
 
 Feel free to colaborate with the developer and [donate a cafecito ($)](https://cafecito.app/juanfraherrero)
 
-TODO
-
 # Project Tasks
 
 ### Status Key
 
-- **Open**: The task is yet to be started.
-- **In Progress**: The task is actively being worked on.
-- **Closed**: The task has been completed.
+- **Open**(O): The task is yet to be started.
+- **In Progress**(P): The task is actively being worked on.
+- **Closed**(C): The task has been completed.
 
 ### 🚀 Upcoming Features / Bugs / Tasks
 
-| ID  | Description                                                                     | Priority | Type    | O/C |
-| --- | ------------------------------------------------------------------------------- | -------- | ------- | --- |
-| 02  | Add night and day themes                                                        | Medium   | Bug     | x   |
-| 03  | Expandir en vertical para que ocupe todo lo que pueda los tabs                  | High     | Feature | x   |
-| 04  | Ajustar el enES en donde no moleste, abajo agregando margin right y sino arriba | High     | Open    | x   |
-| 05  | Que donde estén los tabs que tenga el tamaño restante (flex 1 usar el restante) | High     | Open    | x   |
-| 06  | Add button in options to open popup                                             | Low      | Open    |     |
-| 07  | Add shortcut to add page to specific env                                        | Low      | Open    |     |
-| 08  | Add cafecito                                                                    | Low      | Open    | x   |
+| ID  | Description                                                                     | Priority | Type     | O/C |
+| --- | ------------------------------------------------------------------------------- | -------- | -------- | --- |
+| 02  | Add night and day themes                                                        | Medium   | Bug      | C   |
+| 03  | Expandir en vertical para que ocupe todo lo que pueda los tabs                  | High     | Feature  | C   |
+| 04  | Ajustar el enES en donde no moleste, abajo agregando margin right y sino arriba | High     | Feature  | C   |
+| 05  | Que donde estén los tabs que tenga el tamaño restante (flex 1 usar el restante) | High     | Bug      | C   |
+| 06  | Add button in options to open popup                                             | Low      | Feature  | O   |
+| 07  | Add shortcut to add page to specific env                                        | Low      | Feature  |     |
+| 08  | Add cafecito                                                                    | Low      | Features | C   |
