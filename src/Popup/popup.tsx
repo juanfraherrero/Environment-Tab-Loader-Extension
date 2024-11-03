@@ -21,6 +21,7 @@ export default function PopupPage(): JSX.Element {
    */
   const loadLanguages = useCallback(() => {
     chrome.storage.sync.get(['lng'], result => {
+      /* eslint-disable no-console */
       if (chrome.runtime.lastError) console.error('Failed to fetch language');
       const lng = result.lng;
       if (lng) changeLanguage(lng);
