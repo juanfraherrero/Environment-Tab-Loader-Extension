@@ -17,7 +17,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       recieve message from popUp when
       user selects the enviroment to load
     */
-    executeMainFunction(request.selectedEnv, request.command);
+    try {
+      executeMainFunction(request.selectedEnv, request.command);
+      sendResponse({ success: true });
+    } catch (e) {
+      sendResponse({ success: false });
+    }
   }
 });
 
@@ -28,7 +33,7 @@ function displayPopUp(command) {
   chrome.windows.create({
     url: chrome.runtime.getURL("popup.html?command=" + command),
     type: "popup",
-    width: 500,
+    width: 400,
     height: 500,
   });
 }
@@ -48,6 +53,7 @@ function executeMainFunction(selectedEnv, command) {
 
   // retrieve enviroments
   chrome.storage.sync.get(["environments"], (result) => {
+    if (chrome.runtime.lastError) throw new Error("Error getting storage info");
     const environments = result.environments || {};
     const urls = environments[selectedEnv] || [];
 

@@ -1,0 +1,40 @@
+{
+  "translation": {
+    "title": "Configure Environments",
+    "error": {
+      "max_quantity": "Max quantity of environments is 9",
+      "env_already_exist": "{{env}} already exists",
+      "create_new_env": "Error while creating new environment. Contact with creator!",
+      "delete_new_env": "Error while deleting new environment. Contact with creator!",
+      "add_new_tab": "Error while adding tab to environment. Contact with creator!",
+      "delete_tab": "Error while deleting tab from environment. Contact with creator!",
+      "update_tab": "Error while updating tab from environment. Contact with creator!",
+      "save_language": "Error saving language. It will not be preserved",
+      "fail_app": "Fail app, contact creator"
+    },
+    "alert": {
+      "env_already_exist": "Url already exists in environment",
+      "no_tabs_for_env": "No tabs configured for environment selected",
+      "create_env": "Must create environment"
+    },
+    "confirm": {
+      "delete_env": "Are you sure to delete environment {{env}}?"
+    },
+    "button": {
+      "add": "Add",
+      "delete": "Delete",
+      "edit": "Edit",
+      "save": "Save",
+      "select_env": "Select environment",
+      "new_tab": "URL of new tab",
+      "new_env": "New environment"
+    },
+    "dialog": {
+      "editTab": {
+        "title": "Edit tab",
+        "description": "Change url tab. Click save when you're done."
+      }
+    },
+    "popup_title": "Select Environment"
+  }
+}

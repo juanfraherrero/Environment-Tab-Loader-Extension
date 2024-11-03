@@ -1,37 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seleccionar Entorno</title>
+  <link rel="stylesheet" href="/index.css">
+  <title>Seleccionar entornos</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 15px;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    #environmentsList {
-      width: 50%;
-      margin: auto;
-    }
-
-    button {
-      width: 100%;
-      margin: 5px 0;
-      padding: 5px;
+      height: 100vh;
+      max-height: calc(100vh - 20px);
+      padding: 10px;
     }
   </style>
 </head>
 
 <body>
-  <h1>Seleccionar Entorno</h1>
-  <div id="environmentsList"></div>
-  <script src="popup.js"></script>
+  <div id="root"></div>
+  <script type="module" src="/src/Popup/main.tsx"></script>
 </body>
 
 </html>

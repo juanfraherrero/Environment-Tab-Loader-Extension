@@ -1,0 +1,12 @@
+Dark Primary
+#692729
+358°, 46%, 28% 
+
+White Primary
+#faeaed
+349°, 62%, 95
+
+Error
+
+#b00020
+349°, 100%, 35%
