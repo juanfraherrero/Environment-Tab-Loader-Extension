@@ -1,4 +1,5 @@
 import { useToast } from "@/hooks/use-toast";
+import { Cafesito } from "@/options/subComponents/Cafesito";
 import { ModeToggle } from "@/options/subComponents/changeThemeDrop";
 import LanguageSelector from "@/options/subComponents/LanguageSelector";
 import { memo, useCallback, useEffect } from "react";
@@ -49,6 +50,7 @@ const Footer = memo(() => {
   return (
     <div className="w-full flex flex-row flex-nowrap justify-between items-center">
       <ModeToggle />
+      <Cafesito />
       <LanguageSelector
         handleChangeLanguage={updateLanguage}
         currentLanguage={language}

@@ -67,4 +67,4 @@ TODO
 | 05  | Que donde estén los tabs que tenga el tamaño restante (flex 1 usar el restante) | High     | Open    | x   |
 | 06  | Add button in options to open popup                                             | Low      | Open    |     |
 | 07  | Add shortcut to add page to specific env                                        | Low      | Open    |     |
-| 08  | Add cafecito                                                                    | Low      | Open    |     |
+| 08  | Add cafecito                                                                    | Low      | Open    | x   |
