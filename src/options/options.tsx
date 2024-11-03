@@ -1,16 +1,18 @@
-import { useCallback, useEffect, useState } from "react";
-import TabsForEnvironmentSection from "./subComponents/TabsForEnvironmentSection";
-import SelectEnvironmentSection from "./subComponents/SelectEnvironmentSection";
-import { Environments } from "../types/Environment";
-import AddEnvironmentSection from "./subComponents/AddEnviromentsSection";
-import { useToast } from "@/hooks/use-toast";
-import { Toaster } from "@/components/ui/toaster";
-import { useTranslation } from "react-i18next";
+import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-export default function OptionsPage() {
+import { Toaster } from '@/components/ui/toaster';
+import { useToast } from '@/hooks/use-toast';
+
+import SelectEnvironmentSection from './subComponents/SelectEnvironmentSection';
+import TabsForEnvironmentSection from './subComponents/TabsForEnvironmentSection';
+import { Environments } from '../types/Environment';
+import AddEnvironmentSection from './subComponents/AddEnviromentsSection';
+
+export default function OptionsPage(): JSX.Element {
   const [environments, setEnvironments] = useState<Environments>({});
   const [selectedEnv, setSelectedEnv] = useState<string | null>(null);
-  const [newPageUrl, setNewPageUrl] = useState<string>("");
+  const [newPageUrl, setNewPageUrl] = useState<string>('');
   const [pages, setPages] = useState<string[]>([]);
   const { toast } = useToast();
   const { t } = useTranslation();
@@ -28,14 +30,14 @@ export default function OptionsPage() {
       }
       setPages(loadedPages);
     },
-    [environments]
+    [environments],
   );
 
   /**
    * Load all envs from storage and set first env
    */
   const loadAll = useCallback(() => {
-    chrome.storage.sync.get(["environments"], (result) => {
+    chrome.storage.sync.get(['environments'], result => {
       const loadedEnvs = result.environments || ({} as Environments);
       setEnvironments(loadedEnvs);
 
@@ -52,19 +54,19 @@ export default function OptionsPage() {
       if (!envName) return;
 
       // Get envs in loweCase
-      const envs = Object.keys(environments).map((e) => e.toLowerCase());
+      const envs = Object.keys(environments).map(e => e.toLowerCase());
 
       if (envs.length >= 9) {
         // alert("Max quantity of environments is 9");
         toast({
-          title: t("error.max_quantity"),
+          title: t('error.max_quantity'),
         });
         return;
       }
       if (envs.includes(envName.toLowerCase())) {
         // alert("Environment " + envName + " already exists");
         toast({
-          title: t("error.env_already_exist", { env: envName }),
+          title: t('error.env_already_exist', { env: envName }),
         });
         return;
       }
@@ -76,8 +78,8 @@ export default function OptionsPage() {
         if (chrome.runtime.lastError) {
           // alert("Error while creating new environment. Contact with creator!");
           toast({
-            variant: "destructive",
-            title: t("error.create_new_env"),
+            variant: 'destructive',
+            title: t('error.create_new_env'),
           });
           return;
         }
@@ -85,14 +87,14 @@ export default function OptionsPage() {
         setEnvironments(updatedEnvs);
       });
     },
-    [environments, toast, t]
+    [environments, toast, t],
   );
 
   /**
    * Deletes selected environment
    */
   const handleDeleteEnvironment = useCallback(() => {
-    if (selectedEnv && confirm(t("confirm.delete_env", { env: selectedEnv }))) {
+    if (selectedEnv && confirm(t('confirm.delete_env', { env: selectedEnv }))) {
       const updatedEnvs = { ...environments };
       delete updatedEnvs[selectedEnv];
 
@@ -101,8 +103,8 @@ export default function OptionsPage() {
         if (chrome.runtime.lastError) {
           // alert("Error while deleting environment. Contact with creator!");
           toast({
-            variant: "destructive",
-            title: t("error.delete_new_env"),
+            variant: 'destructive',
+            title: t('error.delete_new_env'),
           });
           return;
         }
@@ -125,11 +127,11 @@ export default function OptionsPage() {
   /**
    * Adds tab to environment selected
    */
-  const handleAddPage = () => {
+  const handleAddPage = (): void => {
     if (newPageUrl && selectedEnv) {
       if (environments[selectedEnv].includes(newPageUrl)) {
         toast({
-          title: t("alert.env_already_exist"),
+          title: t('alert.env_already_exist'),
         });
         return;
       }
@@ -140,12 +142,12 @@ export default function OptionsPage() {
         if (chrome.runtime.lastError) {
           // alert("Error while adding tab to environment. Contact with creator!");
           toast({
-            variant: "destructive",
-            title: t("error.add_new_tab"),
+            variant: 'destructive',
+            title: t('error.add_new_tab'),
           });
           return;
         }
-        setNewPageUrl("");
+        setNewPageUrl('');
         setEnvironments(updatedEnvs);
       });
     }
@@ -154,17 +156,17 @@ export default function OptionsPage() {
   /**
    * Deletes tab from environment selected
    */
-  const handleDeletePage = (urlToDelete: string) => {
+  const handleDeletePage = (urlToDelete: string): void => {
     if (urlToDelete && selectedEnv) {
       const updatedEnvs = { ...environments }; // shallow copy to change ref and re-render
       updatedEnvs[selectedEnv] = updatedEnvs[selectedEnv].filter(
-        (urlEnv) => urlEnv !== urlToDelete
+        urlEnv => urlEnv !== urlToDelete,
       );
       chrome.storage.sync.set({ environments: updatedEnvs }, () => {
         if (chrome.runtime.lastError) {
           toast({
-            variant: "destructive",
-            title: t("error.delete_tab"),
+            variant: 'destructive',
+            title: t('error.delete_tab'),
           });
           return;
         }
@@ -176,11 +178,11 @@ export default function OptionsPage() {
   /**
    * Update tab from environment selected
    */
-  const handleEditPage = (urlToEdit: string, oldUrl: string) => {
+  const handleEditPage = (urlToEdit: string, oldUrl: string): void => {
     if (urlToEdit && oldUrl && selectedEnv) {
       const updatedEnvs = { ...environments }; // shallow copy to change ref and re-render
 
-      updatedEnvs[selectedEnv] = updatedEnvs[selectedEnv].map((urlEnv) => {
+      updatedEnvs[selectedEnv] = updatedEnvs[selectedEnv].map(urlEnv => {
         // change old url for new
         if (urlEnv === oldUrl) {
           return urlToEdit;
@@ -191,8 +193,8 @@ export default function OptionsPage() {
       chrome.storage.sync.set({ environments: updatedEnvs }, () => {
         if (chrome.runtime.lastError) {
           toast({
-            variant: "destructive",
-            title: t("error.update_tab"),
+            variant: 'destructive',
+            title: t('error.update_tab'),
           });
           return;
         }
@@ -204,7 +206,7 @@ export default function OptionsPage() {
   /**
    * The env selected change so update state for selectedEnv and load new selectedEnv's tabs
    */
-  const handleChangeEnvironment = (envSelected: string) => {
+  const handleChangeEnvironment = (envSelected: string): void => {
     setSelectedEnv(envSelected);
   };
 
@@ -225,7 +227,7 @@ export default function OptionsPage() {
   return (
     <>
       <h1 className="text-center mt-3 mb-5 scroll-m-20 text-2xl font-extrabold tracking-tight">
-        {t("title")}
+        {t('title')}
       </h1>
 
       <AddEnvironmentSection handleAddEnvironment={handleAddEnvironment} />

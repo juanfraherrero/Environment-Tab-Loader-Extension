@@ -1,5 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -9,10 +11,9 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogClose,
-} from "@/components/ui/dialog";
-import { useState } from "react";
-import { Label } from "@/components/ui/label";
-import { useTranslation } from "react-i18next";
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 interface TabsForEnvironmentSectionProps {
   newPageUrl: string;
@@ -31,7 +32,7 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
   handleEditPage,
   pages,
 }) => {
-  const [urlDialog, setUrlDialog] = useState<string>("");
+  const [urlDialog, setUrlDialog] = useState<string>('');
   const { t } = useTranslation();
 
   return (
@@ -39,11 +40,11 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
       <div className="w-[70%] mx-auto flex items-center mb-5 pr-[16px]">
         <Input
           type="text"
-          placeholder={t("button.new_tab")}
+          placeholder={t('button.new_tab')}
           value={newPageUrl}
-          onChange={(e) => setNewPageUrl(e.target.value)}
-          onKeyUp={(e) => {
-            if (e.key === "Enter") handleAddPage();
+          onChange={e => setNewPageUrl(e.target.value)}
+          onKeyUp={e => {
+            if (e.key === 'Enter') handleAddPage();
           }}
           className="px-4 py-2 w-full"
         />
@@ -52,7 +53,7 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
           onClick={handleAddPage}
           className="px-4 py-2 ml-2"
         >
-          {t("button.add")}
+          {t('button.add')}
         </Button>
       </div>
 
@@ -78,14 +79,14 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
                         setUrlDialog(page);
                       }}
                     >
-                      {t("button.edit")}
+                      {t('button.edit')}
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="w-[75%]">
                     <DialogHeader>
-                      <DialogTitle>{t("dialog.editTab.title")}</DialogTitle>
+                      <DialogTitle>{t('dialog.editTab.title')}</DialogTitle>
                       <DialogDescription>
-                        {t("dialog.editTab.description")}
+                        {t('dialog.editTab.description')}
                       </DialogDescription>
                     </DialogHeader>
                     <div className="w-full py-5">
@@ -95,7 +96,7 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
                       <Input
                         id="name"
                         value={urlDialog}
-                        onChange={(e) => {
+                        onChange={e => {
                           setUrlDialog(e.target.value);
                         }}
                         className="w-full"
@@ -108,7 +109,7 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
                           variant="default"
                           onClick={() => handleEditPage(urlDialog, page)}
                         >
-                          {t("button.save")}
+                          {t('button.save')}
                         </Button>
                       </DialogClose>
                       <DialogClose asChild>
@@ -117,7 +118,7 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
                           variant="destructive"
                           onClick={() => handleDeletePage(page)}
                         >
-                          {t("button.delete")}
+                          {t('button.delete')}
                         </Button>
                       </DialogClose>
                     </DialogFooter>

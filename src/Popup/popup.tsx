@@ -1,13 +1,15 @@
-import { useCallback, useEffect, useState } from "react";
-import { Environments } from "../types/Environment";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
-import { Toaster } from "@/components/ui/toaster";
-import { useTranslation } from "react-i18next";
+import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-export default function PopupPage() {
+import { Button } from '@/components/ui/button';
+import { Toaster } from '@/components/ui/toaster';
+import { useToast } from '@/hooks/use-toast';
+
+import { Environments } from '../types/Environment';
+
+export default function PopupPage(): JSX.Element {
   const [enviroments, setEnvironments] = useState<Environments>({});
-  const [command, setCommand] = useState<string>("");
+  const [command, setCommand] = useState<string>('');
   const { toast } = useToast();
   const {
     t,
@@ -18,8 +20,8 @@ export default function PopupPage() {
    * Loads language from chrome storage
    */
   const loadLanguages = useCallback(() => {
-    chrome.storage.sync.get(["lng"], (result) => {
-      if (chrome.runtime.lastError) console.error("Failed to fetch language");
+    chrome.storage.sync.get(['lng'], result => {
+      if (chrome.runtime.lastError) console.error('Failed to fetch language');
       const lng = result.lng;
       if (lng) changeLanguage(lng);
     });
@@ -35,15 +37,15 @@ export default function PopupPage() {
 
     // get command
     const urlParams = new URLSearchParams(window.location.search);
-    const command = urlParams.get("command");
+    const command = urlParams.get('command');
     if (command) setCommand(command);
 
     // get environments
-    chrome.storage.sync.get(["environments"], (result) => {
+    chrome.storage.sync.get(['environments'], result => {
       if (chrome.runtime.lastError) {
         toast({
-          variant: "destructive",
-          title: "Failed to retrieve environments",
+          variant: 'destructive',
+          title: 'Failed to retrieve environments',
         });
       }
 
@@ -63,28 +65,28 @@ export default function PopupPage() {
       if (urls.length > 0) {
         chrome.runtime.sendMessage(
           {
-            action: "executeMainFunction",
+            action: 'executeMainFunction',
             selectedEnv: envName,
             command: command,
           },
-          (response) => {
+          response => {
             if (response?.success) {
               window.close();
             } else {
               toast({
-                variant: "destructive",
-                title: t("error.fail_app"),
+                variant: 'destructive',
+                title: t('error.fail_app'),
               });
             }
-          }
+          },
         );
       } else {
         toast({
-          title: t("alert.no_tabs_for_env"),
+          title: t('alert.no_tabs_for_env'),
         });
       }
     },
-    [enviroments, toast]
+    [enviroments, toast],
   );
 
   /**
@@ -94,23 +96,23 @@ export default function PopupPage() {
     (event: KeyboardEvent) => {
       const key = event.key;
 
-      if (key >= "1" && key <= `${Object.keys(enviroments).length}`) {
+      if (key >= '1' && key <= `${Object.keys(enviroments).length}`) {
         const buttonIndex = parseInt(key);
         const selectedEnvironment =
           Object.keys(enviroments).sort()[buttonIndex - 1]; // Adjust the index since key starts at 1
         openEnvironment(selectedEnvironment, command);
       }
     },
-    [enviroments, command, openEnvironment]
+    [enviroments, command, openEnvironment],
   );
 
   // use effect for add and remove event handlers
   useEffect(() => {
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
 
     // Cleanup the event listener when the component unmounts
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+    return (): void => {
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [enviroments, handleKeyDown]);
 
@@ -119,7 +121,7 @@ export default function PopupPage() {
     return (
       <>
         <h1 className="text-center mt-3 mb-5 scroll-m-20 text-2xl font-extrabold tracking-tight">
-          {t("alert.create_env")}
+          {t('alert.create_env')}
         </h1>
       </>
     );
@@ -128,7 +130,7 @@ export default function PopupPage() {
   return (
     <>
       <h1 className="text-center mt-3 mb-5 scroll-m-20 text-2xl font-extrabold tracking-tight">
-        {t("popup_title")}
+        {t('popup_title')}
       </h1>
       <div
         id="environmentsList"

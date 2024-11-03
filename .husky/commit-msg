@@ -1,0 +1,2 @@
+echo "Running commitLint"
+npx --no -- commitlint --edit $1

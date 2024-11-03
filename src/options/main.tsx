@@ -1,10 +1,13 @@
-import { StrictMode } from "react";
-import OptionsPage from "./options";
-import { createRoot } from "react-dom/client";
-import "../i18n";
-import Footer from "@/Footer/Footer";
-import { ThemeProvider } from "@/components/theme-provider";
-const container = document.getElementById("root");
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+
+import '../i18n';
+import { ThemeProvider } from '@/components/theme-provider';
+import Footer from '@/Footer/Footer';
+
+import OptionsPage from './options';
+
+const container = document.getElementById('root');
 const root = createRoot(container as HTMLDivElement);
 
 root.render(
@@ -13,5 +16,5 @@ root.render(
       <OptionsPage />
       <Footer />
     </ThemeProvider>
-  </StrictMode>
+  </StrictMode>,
 );

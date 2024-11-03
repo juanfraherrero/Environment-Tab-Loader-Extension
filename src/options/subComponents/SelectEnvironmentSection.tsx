@@ -1,13 +1,15 @@
+import { useTranslation } from 'react-i18next';
+
+import { Button } from '@/components/ui/button';
 import {
   Select,
   SelectItem,
   SelectTrigger,
   SelectValue,
   SelectContent,
-} from "@/components/ui/select";
-import { Environments } from "../../types/Environment";
-import { Button } from "@/components/ui/button";
-import { useTranslation } from "react-i18next";
+} from '@/components/ui/select';
+
+import { Environments } from '../../types/Environment';
 
 interface SelectEnvironmentSectionProps {
   environments: Environments;
@@ -21,19 +23,19 @@ export default function SelectEnvironmentSection({
   selectedEnv,
   handleChangeEnvironment,
   handleDeleteEnvironment,
-}: SelectEnvironmentSectionProps) {
+}: SelectEnvironmentSectionProps): JSX.Element {
   const { t } = useTranslation();
 
   return (
     <div className="w-[80%] mx-auto flex items-center mb-5">
       <Select
-        value={selectedEnv || ""}
-        onValueChange={(value) => {
+        value={selectedEnv || ''}
+        onValueChange={value => {
           handleChangeEnvironment(value);
         }}
       >
         <SelectTrigger>
-          <SelectValue placeholder={t("button.select_env")} />
+          <SelectValue placeholder={t('button.select_env')} />
         </SelectTrigger>
         <SelectContent className="overflow-y-auto max-h-[75vh]">
           {Object.keys(environments)
@@ -51,7 +53,7 @@ export default function SelectEnvironmentSection({
         variant="destructive"
         onClick={handleDeleteEnvironment}
       >
-        {t("button.delete")}
+        {t('button.delete')}
       </Button>
     </div>
   );

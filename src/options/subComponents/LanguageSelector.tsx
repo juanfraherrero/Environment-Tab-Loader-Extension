@@ -1,5 +1,6 @@
-import { memo } from "react";
-import { Toggle } from "@/components/ui/toggle";
+import { memo } from 'react';
+
+import { Toggle } from '@/components/ui/toggle';
 
 interface LanguageSelectorProps {
   handleChangeLanguage: (lng: string) => void;
@@ -12,8 +13,8 @@ const LanguageSelector = memo(
       <div className="p-1 m-0 ">
         <Toggle
           size="sm"
-          pressed={currentLanguage === "en"}
-          onPressedChange={() => handleChangeLanguage("en")}
+          pressed={currentLanguage === 'en'}
+          onPressedChange={() => handleChangeLanguage('en')}
           className="h-[2.25rem] w-[2.25rem]"
         >
           EN
@@ -21,15 +22,15 @@ const LanguageSelector = memo(
 
         <Toggle
           size="sm"
-          pressed={currentLanguage === "es"}
-          onPressedChange={() => handleChangeLanguage("es")}
+          pressed={currentLanguage === 'es'}
+          onPressedChange={() => handleChangeLanguage('es')}
           className="h-[2.25rem] w-[2.25rem]"
         >
           ES
         </Toggle>
       </div>
     );
-  }
+  },
 );
 
 export default LanguageSelector;

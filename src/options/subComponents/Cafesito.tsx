@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-export function Cafesito() {
+export function Cafesito(): JSX.Element {
   const [showButton, setShowButton] = useState<boolean>(false);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ export function Cafesito() {
         setShowButton(false);
       }, 5000);
     }
-    return () => clearTimeout(timer);
+    return (): void => clearTimeout(timer);
   }, [showButton]);
 
   return (
@@ -21,7 +21,7 @@ export function Cafesito() {
         alt="Doná un cafesito"
         className={`absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]
             transition-all duration-500 ${
-              showButton ? "opacity-0 z-0" : "opacity-100 cursor-pointer z-10"
+              showButton ? 'opacity-0 z-0' : 'opacity-100 cursor-pointer z-10'
             }`}
         onClick={() => {
           setShowButton(true);
@@ -33,7 +33,7 @@ export function Cafesito() {
         target="_blank"
         rel="noopener"
         className={`relative transition-all duration-500 ${
-          showButton ? "opacity-100 z-10" : "opacity-0 pointer-events-none"
+          showButton ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none'
         }`}
       >
         <img

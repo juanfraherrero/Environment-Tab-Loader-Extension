@@ -1,7 +1,8 @@
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { memo, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { memo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 interface AddEnvironmentSectionProps {
   handleAddEnvironment: (envName: string) => void;
@@ -9,13 +10,13 @@ interface AddEnvironmentSectionProps {
 
 const AddEnvironmentSection = memo(
   ({ handleAddEnvironment }: AddEnvironmentSectionProps) => {
-    const [envName, setEnvName] = useState<string>("");
+    const [envName, setEnvName] = useState<string>('');
     const { t } = useTranslation();
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === "Enter") {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+      if (e.key === 'Enter') {
         handleAddEnvironment(envName);
-        setEnvName("");
+        setEnvName('');
       }
     };
 
@@ -24,9 +25,9 @@ const AddEnvironmentSection = memo(
         <Input
           id="name"
           type="text"
-          placeholder={t("button.new_env")}
+          placeholder={t('button.new_env')}
           value={envName}
-          onChange={(e) => setEnvName(e.target.value)}
+          onChange={e => setEnvName(e.target.value)}
           onKeyUp={handleKeyDown}
           className="px-4 py-2 w-full"
         />
@@ -35,11 +36,11 @@ const AddEnvironmentSection = memo(
           onClick={() => handleAddEnvironment(envName)}
           className="px-4 py-2 ml-2"
         >
-          {t("button.add")}
+          {t('button.add')}
         </Button>
       </div>
     );
-  }
+  },
 );
 
 export default AddEnvironmentSection;

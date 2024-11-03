@@ -1,0 +1,4 @@
+echo "Running Husky pre-commit script. It verifies linting and syntax formatting."
+
+npm run lint:fix -- --quiet
+npm run format
