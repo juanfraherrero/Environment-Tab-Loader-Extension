@@ -90,37 +90,37 @@ export default function OptionsPage(): JSX.Element {
     [environments, toast, t],
   );
 
-  /**
-   * Deletes selected environment
-   */
-  const handleDeleteEnvironment = useCallback(() => {
-    if (selectedEnv && confirm(t('confirm.delete_env', { env: selectedEnv }))) {
-      const updatedEnvs = { ...environments };
-      delete updatedEnvs[selectedEnv];
+  // /**
+  //  * Deletes selected environment
+  //  */
+  // const handleDeleteEnvironment = useCallback(() => {
+  //   if (selectedEnv && confirm(t('confirm.delete_env', { env: selectedEnv }))) {
+  //     const updatedEnvs = { ...environments };
+  //     delete updatedEnvs[selectedEnv];
 
-      chrome.storage.sync.set({ environments: updatedEnvs }, () => {
-        // loadEnvironments(); // do not fetch to storage
-        if (chrome.runtime.lastError) {
-          // alert("Error while deleting environment. Contact with creator!");
-          toast({
-            variant: 'destructive',
-            title: t('error.delete_new_env'),
-          });
-          return;
-        }
-        // Update local state
-        setEnvironments(updatedEnvs);
+  //     chrome.storage.sync.set({ environments: updatedEnvs }, () => {
+  //       // loadEnvironments(); // do not fetch to storage
+  //       if (chrome.runtime.lastError) {
+  //         // alert("Error while deleting environment. Contact with creator!");
+  //         toast({
+  //           variant: 'destructive',
+  //           title: t('error.delete_new_env'),
+  //         });
+  //         return;
+  //       }
+  //       // Update local state
+  //       setEnvironments(updatedEnvs);
 
-        // As env was deleted set first env if exist else null
-        const firstEnv = Object.keys(updatedEnvs).sort()[0];
-        if (firstEnv) {
-          setSelectedEnv(firstEnv);
-        } else {
-          setSelectedEnv(null);
-        }
-      });
-    }
-  }, [environments, selectedEnv, toast, t]);
+  //       // As env was deleted set first env if exist else null
+  //       const firstEnv = Object.keys(updatedEnvs).sort()[0];
+  //       if (firstEnv) {
+  //         setSelectedEnv(firstEnv);
+  //       } else {
+  //         setSelectedEnv(null);
+  //       }
+  //     });
+  //   }
+  // }, [environments, selectedEnv, toast, t]);
 
   // --- Pages Functions
 
@@ -236,7 +236,6 @@ export default function OptionsPage(): JSX.Element {
         environments={environments}
         selectedEnv={selectedEnv}
         handleChangeEnvironment={handleChangeEnvironment}
-        handleDeleteEnvironment={handleDeleteEnvironment}
       />
 
       {selectedEnv && (

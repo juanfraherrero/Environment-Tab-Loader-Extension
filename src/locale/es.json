@@ -27,12 +27,19 @@
       "save": "Guardar",
       "select_env": "Seleccionar entorno",
       "new_tab": "URL de la nueva pestaña",
-      "new_env": "Nuevo entorno"
+      "new_env": "Nuevo entorno",
+      "open": "Abrir"
     },
     "dialog": {
       "editTab": {
         "title": "Editar pestaña",
         "description": "Cambiar url. Click en Guardar cuando finalizes."
+      },
+      "openEnvTitle": "Abrir Entorno",
+      "openEnvDescription": "Seleccioná si queres abrir el entorno y mantener las otras pestañas o si querés borrar las otras pestañas abiertas",
+      "openEnv": {
+        "keepTabs": "Borrar las otras pestañas",
+        "discardTabs": "Mantener las otras pestañas"
       }
     },
     "popup_title": "Seleccionar Entorno"
