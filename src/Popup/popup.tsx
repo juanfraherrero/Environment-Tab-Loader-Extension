@@ -130,7 +130,7 @@ export default function PopupPage(): JSX.Element {
 
   return (
     <>
-      <h1 className="text-center mt-3 mb-5 scroll-m-20 text-2xl font-extrabold tracking-tight">
+      <h1 className="text-center mt-7 mb-5 scroll-m-20 text-2xl font-semibold italic tracking-tight">
         {t('popup_title')}
       </h1>
       <div

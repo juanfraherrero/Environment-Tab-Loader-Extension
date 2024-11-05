@@ -67,6 +67,10 @@ export default {
       fontFamily: {
         custom: ['Poppins', '"Segoe UI"', 'Tahoma', 'sans-serif'],
       },
+      boxShadow: {
+        'up-lg-dark': '0 0 16px -10px rgba(0, 0, 0, 0.25)',
+        'up-lg-light': '0 0px 16px -10px rgba(255, 255, 255, 0.25)',
+      },
     },
   },
   plugins: [

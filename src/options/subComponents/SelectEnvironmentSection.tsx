@@ -48,35 +48,40 @@ export default function SelectEnvironmentSection({
       },
     );
   };
+
   return (
-    <div className="w-[80%] mx-auto flex items-center mb-5">
-      <Select
-        value={selectedEnv || ''}
-        onValueChange={value => {
-          handleChangeEnvironment(value);
-        }}
-      >
-        <SelectTrigger>
-          <SelectValue placeholder={t('button.select_env')} />
-        </SelectTrigger>
-        <SelectContent className="overflow-y-auto max-h-[75vh]">
-          {Object.keys(environments)
-            .sort()
-            .map((env, idx) => (
-              <SelectItem key={idx} value={env}>
-                {env}
-              </SelectItem>
-            ))}
-        </SelectContent>
-      </Select>
-      <OpenEnvDialog
-        onOpenEnvKeepTabs={() => {
-          callBackground('open_work_environment');
-        }}
-        onOpenEnvDiscardTabs={() => {
-          callBackground('reset_work_environment');
-        }}
-      />
-    </div>
+    <>
+      <div className="w-[80%] mx-auto flex items-center mb-3">
+        <Select
+          value={selectedEnv || ''}
+          onValueChange={value => {
+            handleChangeEnvironment(value);
+          }}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder={t('button.select_env')} />
+          </SelectTrigger>
+          <SelectContent className="overflow-y-auto max-h-[75vh]">
+            {Object.keys(environments)
+              .sort()
+              .map((env, idx) => (
+                <SelectItem key={idx} value={env}>
+                  {env}
+                </SelectItem>
+              ))}
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="w-[50%] mx-auto flex items-center justify-center mb-10">
+        <OpenEnvDialog
+          onOpenEnvKeepTabs={() => {
+            callBackground('open_work_environment');
+          }}
+          onOpenEnvDiscardTabs={() => {
+            callBackground('reset_work_environment');
+          }}
+        />
+      </div>
+    </>
   );
 }

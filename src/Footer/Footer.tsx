@@ -49,7 +49,7 @@ const Footer = memo(() => {
   }, [loadLanguages]);
 
   return (
-    <div className="w-full flex flex-row flex-nowrap justify-between items-center">
+    <div className="w-full flex flex-row flex-nowrap justify-between items-center shadow-up-lg-dark dark:shadow-up-lg-light">
       <ModeToggle />
       <Cafesito />
       <LanguageSelector

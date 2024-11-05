@@ -246,7 +246,7 @@ export function OptionsPage(): JSX.Element {
           <ChevronLeft className="h-[1.2rem] w-[1.2rem]" />
         </Button>
 
-        <h1 className="text-center mt-7 mb-5 scroll-m-20 text-2xl font-semibold italic tracking-tight">
+        <h1 className="text-center mt-10 mb-10 scroll-m-20 text-2xl font-semibold italic tracking-tight">
           {t('titleSettings')}
         </h1>
 
@@ -274,7 +274,7 @@ export function OptionsPage(): JSX.Element {
         <Settings className="h-[1.2rem] w-[1.2rem]" />
       </Button>
 
-      <h1 className="text-center mt-7 mb-5 scroll-m-20 text-2xl font-semibold italic tracking-tight">
+      <h1 className="text-center mt-10 mb-10 scroll-m-20 text-2xl font-semibold italic tracking-tight">
         {t('title')}
       </h1>
 

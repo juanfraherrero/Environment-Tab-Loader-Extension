@@ -25,7 +25,7 @@ export function OpenEnvDialog({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="px-4 py-2 ml-2" variant="default">
+        <Button className="px-4 py-2 ml-2 w-full text-base" variant="default">
           {t('button.open')}
         </Button>
       </DialogTrigger>

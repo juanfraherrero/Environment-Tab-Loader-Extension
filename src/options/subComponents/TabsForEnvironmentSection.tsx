@@ -37,7 +37,7 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
 
   return (
     <>
-      <div className="w-[70%] mx-auto flex items-center mb-8 ">
+      <div className="w-[70%] mx-auto flex items-center mb-5 ">
         <Input
           type="text"
           placeholder={t('button.new_tab')}
