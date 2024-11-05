@@ -1,6 +1,7 @@
 {
   "translation": {
-    "title": "Configure Environments",
+    "title": "Your Environments",
+    "titleSettings": "Configure Your Environments",
     "error": {
       "max_quantity": "Max quantity of environments is 9",
       "env_already_exist": "{{env}} already exists",
@@ -40,6 +41,10 @@
       "openEnv": {
         "keepTabs": "Keep other tabs",
         "discardTabs": "Delete other tabs"
+      },
+      "deleteEnv": {
+        "title": "Delete Environment",
+        "description": "Are you sure to delete environment {{env}}?"
       }
     },
     "popup_title": "Select Environment"

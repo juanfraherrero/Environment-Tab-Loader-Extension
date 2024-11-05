@@ -64,13 +64,14 @@ Feel free to colaborate with the developer and [donate a cafecito ($)](https://c
 | 05  | Que donde estén los tabs que tenga el tamaño restante (flex 1 usar el restante)         | High     | Bug      | C   |
 | 08  | Add cafecito                                                                            | Low      | Features | C   |
 | 06  | Add button in options to open Envs without shortcuts                                    | Low      | Feature  | C   |
+| 11  | Poner una ruedita de config, esto abre un pop up con el add env, y el delete env        | Low      | epic     | C   |
 | --  | ---                                                                                     | --       | --       | -   |
 | 12  | Al agregar un env se ponse al fina, y se tiene que reordenar pero manteniendo el elgido | medium   | Bug      | O   |
 | 13  | Al agregar un env se tiene que borrar lo escrito                                        | medium   | Bug      | O   |
 | 07  | Add shortcut to add page to specific env                                                | Low      | Feature  | O   |
 | 09  | El entorno elegido se mantange entre aperturas y cierres                                | Low      | Features | O   |
 | 10  | Poner un signo de pregunta que enhover explique que es, shortcuts                       | Low      | Features | O   |
-| 11  | Poner una ruedita de config, esto abre un pop up con el add env, y el delete env        | Low      | epic     | O   |
+| 14  | Analye how to centralize Dialogs when maping in envs or tabs, could be optimized ¿?     | Low      | Research | O   |
 
 #### 11
 

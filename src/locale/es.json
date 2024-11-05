@@ -1,6 +1,7 @@
 {
   "translation": {
-    "title": "Configurar Entornos",
+    "title": "Tus Entornos",
+    "titleSettings": "Configurá Tus Entornos",
     "error": {
       "max_quantity": "Máximo 9 entornos",
       "env_already_exist": "{{env}} ya existe",
@@ -40,6 +41,10 @@
       "openEnv": {
         "keepTabs": "Borrar las otras pestañas",
         "discardTabs": "Mantener las otras pestañas"
+      },
+      "deleteEnv": {
+        "title": "Borrar Entorno",
+        "description": "Estás seguro de borrar el entorno {{env}}?"
       }
     },
     "popup_title": "Seleccionar Entorno"

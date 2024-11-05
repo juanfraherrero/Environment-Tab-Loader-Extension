@@ -1,6 +1,8 @@
+import { ChevronLeft, Settings } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Button } from '@/components/ui/button';
 import { Toaster } from '@/components/ui/toaster';
 import { useToast } from '@/hooks/use-toast';
 
@@ -8,12 +10,17 @@ import SelectEnvironmentSection from './subComponents/SelectEnvironmentSection';
 import TabsForEnvironmentSection from './subComponents/TabsForEnvironmentSection';
 import { Environments } from '../types/Environment';
 import AddEnvironmentSection from './subComponents/AddEnviromentsSection';
+import { ListOfEnvs } from './subComponents/ListOfEnvs';
+import { View } from './types/View';
 
-export default function OptionsPage(): JSX.Element {
+export function OptionsPage(): JSX.Element {
+  const [view, setView] = useState<View>(View.Main); // manage views with state
+
   const [environments, setEnvironments] = useState<Environments>({});
   const [selectedEnv, setSelectedEnv] = useState<string | null>(null);
   const [newPageUrl, setNewPageUrl] = useState<string>('');
   const [pages, setPages] = useState<string[]>([]);
+
   const { toast } = useToast();
   const { t } = useTranslation();
 
@@ -90,37 +97,40 @@ export default function OptionsPage(): JSX.Element {
     [environments, toast, t],
   );
 
-  // /**
-  //  * Deletes selected environment
-  //  */
-  // const handleDeleteEnvironment = useCallback(() => {
-  //   if (selectedEnv && confirm(t('confirm.delete_env', { env: selectedEnv }))) {
-  //     const updatedEnvs = { ...environments };
-  //     delete updatedEnvs[selectedEnv];
+  /**
+   * Deletes selected environment
+   */
+  const handleDeleteEnvironment = useCallback(
+    (selectedEnv: string) => {
+      if (selectedEnv) {
+        const updatedEnvs = { ...environments };
+        delete updatedEnvs[selectedEnv];
 
-  //     chrome.storage.sync.set({ environments: updatedEnvs }, () => {
-  //       // loadEnvironments(); // do not fetch to storage
-  //       if (chrome.runtime.lastError) {
-  //         // alert("Error while deleting environment. Contact with creator!");
-  //         toast({
-  //           variant: 'destructive',
-  //           title: t('error.delete_new_env'),
-  //         });
-  //         return;
-  //       }
-  //       // Update local state
-  //       setEnvironments(updatedEnvs);
+        chrome.storage.sync.set({ environments: updatedEnvs }, () => {
+          // loadEnvironments(); // do not fetch to storage
+          if (chrome.runtime.lastError) {
+            // alert("Error while deleting environment. Contact with creator!");
+            toast({
+              variant: 'destructive',
+              title: t('error.delete_new_env'),
+            });
+            return;
+          }
+          // Update local state
+          setEnvironments(updatedEnvs);
 
-  //       // As env was deleted set first env if exist else null
-  //       const firstEnv = Object.keys(updatedEnvs).sort()[0];
-  //       if (firstEnv) {
-  //         setSelectedEnv(firstEnv);
-  //       } else {
-  //         setSelectedEnv(null);
-  //       }
-  //     });
-  //   }
-  // }, [environments, selectedEnv, toast, t]);
+          // As env was deleted set first env if exist else null
+          const firstEnv = Object.keys(updatedEnvs).sort()[0];
+          if (firstEnv) {
+            setSelectedEnv(firstEnv);
+          } else {
+            setSelectedEnv(null);
+          }
+        });
+      }
+    },
+    [environments, toast, t],
+  );
 
   // --- Pages Functions
 
@@ -224,13 +234,49 @@ export default function OptionsPage(): JSX.Element {
     loadAll();
   }, [loadAll]);
 
+  if (view === View.Settings)
+    return (
+      <>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute top-0 left-0 ml-1 h-9 w-9 mt-3 "
+          onClick={() => setView(View.Main)}
+        >
+          <ChevronLeft className="h-[1.2rem] w-[1.2rem]" />
+        </Button>
+
+        <h1 className="text-center mt-3 mb-5 scroll-m-20 text-2xl font-extrabold tracking-tight">
+          {t('titleSettings')}
+        </h1>
+
+        <AddEnvironmentSection handleAddEnvironment={handleAddEnvironment} />
+
+        {Object.keys(environments).length > 0 && (
+          <ListOfEnvs
+            envs={Object.keys(environments)}
+            onDeleteEnv={handleDeleteEnvironment}
+          />
+        )}
+
+        <Toaster />
+      </>
+    );
+
   return (
     <>
+      <Button
+        variant="ghost"
+        size="icon"
+        className="absolute top-0 left-0 ml-1 h-9 w-9 mt-3 "
+        onClick={() => setView(View.Settings)}
+      >
+        <Settings className="h-[1.2rem] w-[1.2rem]" />
+      </Button>
+
       <h1 className="text-center mt-3 mb-5 scroll-m-20 text-2xl font-extrabold tracking-tight">
         {t('title')}
       </h1>
-
-      <AddEnvironmentSection handleAddEnvironment={handleAddEnvironment} />
 
       <SelectEnvironmentSection
         environments={environments}
@@ -248,6 +294,7 @@ export default function OptionsPage(): JSX.Element {
           pages={pages}
         />
       )}
+
       <Toaster />
     </>
   );
