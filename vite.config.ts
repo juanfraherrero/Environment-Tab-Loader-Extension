@@ -1,6 +1,6 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import path, { resolve } from "path";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path, { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,15 +8,15 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        options: resolve(__dirname, "options.html"),
-        popup: resolve(__dirname, "popup.html"),
+        options: resolve(__dirname, 'options.html'),
+        popup: resolve(__dirname, 'popup.html'),
       },
     },
-    outDir: "dist",
+    outDir: 'dist',
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
 });

@@ -240,13 +240,13 @@ export function OptionsPage(): JSX.Element {
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-0 left-0 ml-1 h-9 w-9 mt-3 "
+          className="absolute top-0 left-0 ml-1 h-9 w-9 mt-1 "
           onClick={() => setView(View.Main)}
         >
           <ChevronLeft className="h-[1.2rem] w-[1.2rem]" />
         </Button>
 
-        <h1 className="text-center mt-3 mb-5 scroll-m-20 text-2xl font-extrabold tracking-tight">
+        <h1 className="text-center mt-7 mb-5 scroll-m-20 text-2xl font-semibold italic tracking-tight">
           {t('titleSettings')}
         </h1>
 
@@ -268,13 +268,13 @@ export function OptionsPage(): JSX.Element {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute top-0 left-0 ml-1 h-9 w-9 mt-3 "
+        className="absolute top-0 left-0 ml-1 h-9 w-9 mt-1"
         onClick={() => setView(View.Settings)}
       >
         <Settings className="h-[1.2rem] w-[1.2rem]" />
       </Button>
 
-      <h1 className="text-center mt-3 mb-5 scroll-m-20 text-2xl font-extrabold tracking-tight">
+      <h1 className="text-center mt-7 mb-5 scroll-m-20 text-2xl font-semibold italic tracking-tight">
         {t('title')}
       </h1>
 
