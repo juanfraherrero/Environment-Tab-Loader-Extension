@@ -39,8 +39,8 @@
       "openEnvTitle": "Abrir Entorno",
       "openEnvDescription": "Seleccioná si queres abrir el entorno y mantener las otras pestañas o si querés borrar las otras pestañas abiertas",
       "openEnv": {
-        "keepTabs": "Borrar las otras pestañas",
-        "discardTabs": "Mantener las otras pestañas"
+        "keepTabs": "Mantener las otras pestañas",
+        "discardTabs": "Borrar las otras pestañas"
       },
       "deleteEnv": {
         "title": "Borrar Entorno",
