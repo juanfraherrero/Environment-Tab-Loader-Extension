@@ -1,6 +1,7 @@
 {
   "translation": {
-    "title": "Configure Environments",
+    "title": "Your Environments",
+    "titleSettings": "Configure Your Environments",
     "error": {
       "max_quantity": "Max quantity of environments is 9",
       "env_already_exist": "{{env}} already exists",
@@ -27,12 +28,23 @@
       "save": "Save",
       "select_env": "Select environment",
       "new_tab": "URL of new tab",
-      "new_env": "New environment"
+      "new_env": "New environment",
+      "open": "Open"
     },
     "dialog": {
       "editTab": {
         "title": "Edit tab",
         "description": "Change url tab. Click save when you're done."
+      },
+      "openEnvTitle": "Open Environment",
+      "openEnvDescription": "Select if open environment and keep other tabs, or open environment and delete other tabs",
+      "openEnv": {
+        "keepTabs": "Keep other tabs",
+        "discardTabs": "Delete other tabs"
+      },
+      "deleteEnv": {
+        "title": "Delete Environment",
+        "description": "Are you sure to delete environment {{env}}?"
       }
     },
     "popup_title": "Select Environment"

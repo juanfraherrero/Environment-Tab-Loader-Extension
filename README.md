@@ -56,12 +56,25 @@ Feel free to colaborate with the developer and [donate a cafecito ($)](https://c
 
 ### 🚀 Upcoming Features / Bugs / Tasks
 
-| ID  | Description                                                                     | Priority | Type     | O/C |
-| --- | ------------------------------------------------------------------------------- | -------- | -------- | --- |
-| 02  | Add night and day themes                                                        | Medium   | Bug      | C   |
-| 03  | Expandir en vertical para que ocupe todo lo que pueda los tabs                  | High     | Feature  | C   |
-| 04  | Ajustar el enES en donde no moleste, abajo agregando margin right y sino arriba | High     | Feature  | C   |
-| 05  | Que donde estén los tabs que tenga el tamaño restante (flex 1 usar el restante) | High     | Bug      | C   |
-| 06  | Add button in options to open popup                                             | Low      | Feature  | O   |
-| 07  | Add shortcut to add page to specific env                                        | Low      | Feature  |     |
-| 08  | Add cafecito                                                                    | Low      | Features | C   |
+| ID  | Description                                                                             | Priority | Type     | O/C |
+| --- | --------------------------------------------------------------------------------------- | -------- | -------- | --- |
+| 02  | Add night and day themes                                                                | Medium   | Bug      | C   |
+| 03  | Expandir en vertical para que ocupe todo lo que pueda los tabs                          | High     | Feature  | C   |
+| 04  | Ajustar el enES en donde no moleste, abajo agregando margin right y sino arriba         | High     | Feature  | C   |
+| 05  | Que donde estén los tabs que tenga el tamaño restante (flex 1 usar el restante)         | High     | Bug      | C   |
+| 08  | Add cafecito                                                                            | Low      | Features | C   |
+| 06  | Add button in options to open Envs without shortcuts                                    | Low      | Feature  | C   |
+| 11  | Poner una ruedita de config, esto abre un pop up con el add env, y el delete env        | Low      | epic     | C   |
+| --  | ---                                                                                     | --       | --       | -   |
+| 12  | Al agregar un env se ponse al fina, y se tiene que reordenar pero manteniendo el elgido | medium   | Bug      | O   |
+| 13  | Al agregar un env se tiene que borrar lo escrito                                        | medium   | Bug      | O   |
+| 07  | Add shortcut to add page to specific env                                                | Low      | Feature  | O   |
+| 09  | El entorno elegido se mantange entre aperturas y cierres                                | Low      | Features | O   |
+| 10  | Poner un signo de pregunta que enhover explique que es, shortcuts                       | Low      | Features | O   |
+| 14  | Analye how to centralize Dialogs when maping in envs or tabs, could be optimized ¿?     | Low      | Research | O   |
+
+#### 11
+
+La idea que en la primera pantalla solamente pueda agregar tabs y abrir el env.
+Para borrar o agregar otro tiene que hacerlo desde la configuración
+Al abrir el env desde el botón se debe abrir un pop up que permita elegir entre abrir y mantener, o abrir y cerrar todo

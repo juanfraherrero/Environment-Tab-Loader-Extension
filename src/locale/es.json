@@ -1,6 +1,7 @@
 {
   "translation": {
-    "title": "Configurar Entornos",
+    "title": "Tus Entornos",
+    "titleSettings": "Configurá Tus Entornos",
     "error": {
       "max_quantity": "Máximo 9 entornos",
       "env_already_exist": "{{env}} ya existe",
@@ -27,12 +28,23 @@
       "save": "Guardar",
       "select_env": "Seleccionar entorno",
       "new_tab": "URL de la nueva pestaña",
-      "new_env": "Nuevo entorno"
+      "new_env": "Nuevo entorno",
+      "open": "Abrir"
     },
     "dialog": {
       "editTab": {
         "title": "Editar pestaña",
         "description": "Cambiar url. Click en Guardar cuando finalizes."
+      },
+      "openEnvTitle": "Abrir Entorno",
+      "openEnvDescription": "Seleccioná si queres abrir el entorno y mantener las otras pestañas o si querés borrar las otras pestañas abiertas",
+      "openEnv": {
+        "keepTabs": "Mantener las otras pestañas",
+        "discardTabs": "Borrar las otras pestañas"
+      },
+      "deleteEnv": {
+        "title": "Borrar Entorno",
+        "description": "Estás seguro de borrar el entorno {{env}}?"
       }
     },
     "popup_title": "Seleccionar Entorno"

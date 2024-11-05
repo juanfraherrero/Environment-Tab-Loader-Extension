@@ -5,7 +5,7 @@ import '../i18n';
 import { ThemeProvider } from '@/components/theme-provider';
 import Footer from '@/Footer/Footer';
 
-import OptionsPage from './options';
+import { OptionsPage } from './options';
 
 const container = document.getElementById('root');
 const root = createRoot(container as HTMLDivElement);
