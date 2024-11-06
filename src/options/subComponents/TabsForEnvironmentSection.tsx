@@ -22,6 +22,7 @@ interface TabsForEnvironmentSectionProps {
   handleDeletePage: (urlToDelete: string) => void;
   handleEditPage: (urlToDelete: string, newUrl: string) => void;
   pages: string[];
+  isSelectedEnv: boolean;
 }
 
 const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
@@ -31,32 +32,34 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
   handleDeletePage,
   handleEditPage,
   pages,
+  isSelectedEnv,
 }) => {
   const [urlDialog, setUrlDialog] = useState<string>('');
   const { t } = useTranslation();
 
   return (
     <>
-      <div className="w-[70%] mx-auto flex items-center mb-5 ">
-        <Input
-          type="text"
-          placeholder={t('button.new_tab')}
-          value={newPageUrl}
-          onChange={e => setNewPageUrl(e.target.value)}
-          onKeyUp={e => {
-            if (e.key === 'Enter') handleAddPage();
-          }}
-          className="px-4 py-2 w-full"
-        />
-        <Button
-          type="button"
-          onClick={handleAddPage}
-          className="px-4 py-2 ml-2"
-        >
-          {t('button.add')}
-        </Button>
-      </div>
-
+      {isSelectedEnv && (
+        <div className="w-[70%] mx-auto flex items-center mb-5 ">
+          <Input
+            type="text"
+            placeholder={t('button.new_tab')}
+            value={newPageUrl}
+            onChange={e => setNewPageUrl(e.target.value)}
+            onKeyUp={e => {
+              if (e.key === 'Enter') handleAddPage();
+            }}
+            className="px-4 py-2 w-full"
+          />
+          <Button
+            type="button"
+            onClick={handleAddPage}
+            className="px-4 py-2 ml-2"
+          >
+            {t('button.add')}
+          </Button>
+        </div>
+      )}
       <div
         className=" flex-grow w-full mx-auto overflow-y-auto 
         scrollbar-thin scrollbar-thumb-primary scrollbar-track-transparent 

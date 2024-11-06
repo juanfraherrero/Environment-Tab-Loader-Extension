@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 interface AddEnvironmentSectionProps {
-  handleAddEnvironment: (envName: string) => void;
+  handleAddEnvironment: (envName: string, onSuccess: () => void) => void;
 }
 
 const AddEnvironmentSection = memo(
@@ -15,8 +15,7 @@ const AddEnvironmentSection = memo(
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
       if (e.key === 'Enter') {
-        handleAddEnvironment(envName);
-        setEnvName('');
+        handleAddEnvironment(envName, () => setEnvName(''));
       }
     };
 
@@ -33,7 +32,7 @@ const AddEnvironmentSection = memo(
         />
         <Button
           type="button"
-          onClick={() => handleAddEnvironment(envName)}
+          onClick={() => handleAddEnvironment(envName, () => setEnvName(''))}
           className="px-4 py-2 ml-2"
         >
           {t('button.add')}

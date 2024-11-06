@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.4](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/compare/v0.0.3...v0.0.4) (2024-11-06)
+
+
+### Features
+
+* add create button env when no envs ([ad2bc16](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/commit/ad2bc1678b4b548b82918696849b4ea1538830b8))
+* keep sync the selected environment through opens ([8d713a8](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/commit/8d713a8655baf8d5006f3c52b0f9af000dbf5db9))
+
+
+### Bug Fixes
+
+* clear input new environment when added ([11f43d1](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/commit/11f43d148e403ba95da25cd1d662f5261f61c31b))
+* open only works when is selected an env ([812d127](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/commit/812d127ed2fb700c6570f36026cedc46584407f7))
+* **ui:** fix footer going up when no envs ([2f6fb29](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/commit/2f6fb29e140078e340343348d1c683cd0c729727))
+
 ## [0.0.3](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/compare/v0.0.2...v0.0.3) (2024-11-05)
 
 
