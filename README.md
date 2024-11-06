@@ -1,8 +1,8 @@
-# Environment Tab Loader Extension
+# Your Environment Extension
 
 ## Description
 
-**Environment Tab Loader** allows you to configure and load different work environments, each with a specific set of tabs. You can open a new Chrome window with the corresponding environment tabs or clear all tabs and load only the ones from the selected environment.
+**Your Environment** allows you to configure and load different work environments, each with a specific set of tabs. You can open a new Chrome window with the corresponding environment tabs or clear all tabs and load only the ones from the selected environment.
 
 **Main features:**
 
