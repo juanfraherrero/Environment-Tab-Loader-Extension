@@ -12,7 +12,8 @@
       "update_tab": "Error while updating tab from environment. Contact with creator!",
       "save_language": "Error saving language. It will not be preserved",
       "fail_app": "Fail app, contact creator",
-      "must_have_tabs": "Environment hasn´t loaded tabs"
+      "must_have_tabs": "Environment hasn´t loaded tabs",
+      "must_select_env_to_open": "Select environment to open"
     },
     "alert": {
       "env_already_exist": "Url already exists in environment",

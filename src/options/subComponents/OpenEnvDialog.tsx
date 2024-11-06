@@ -14,10 +14,12 @@ import {
 interface OpenEnvDialogProps {
   onOpenEnvKeepTabs: () => void;
   onOpenEnvDiscardTabs: () => void;
+  isDisabled: boolean;
 }
 export function OpenEnvDialog({
   onOpenEnvKeepTabs,
   onOpenEnvDiscardTabs,
+  isDisabled,
 }: OpenEnvDialogProps): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
@@ -25,7 +27,11 @@ export function OpenEnvDialog({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="px-4 py-2 ml-2 w-full text-base" variant="default">
+        <Button
+          className="px-4 py-2 ml-2 w-full text-base"
+          variant="default"
+          disabled={isDisabled}
+        >
           {t('button.open')}
         </Button>
       </DialogTrigger>

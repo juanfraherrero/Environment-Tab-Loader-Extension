@@ -41,6 +41,13 @@ export default function SelectEnvironmentSection({
    * Calls backgrounds functions to open tabs with specific command to keep or delete other tabs
    */
   const callBackground = (command: string): void => {
+    if (!selectedEnv) {
+      toast({
+        variant: 'default',
+        title: t('error.must_select_env_to_open'),
+      });
+      return;
+    }
     if (
       !selectedEnv ||
       !environments[selectedEnv] ||
@@ -112,6 +119,7 @@ export default function SelectEnvironmentSection({
           onOpenEnvDiscardTabs={() => {
             callBackground('reset_work_environment');
           }}
+          isDisabled={selectedEnv === undefined || selectedEnv === null}
         />
       </div>
     </>

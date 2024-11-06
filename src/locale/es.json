@@ -12,7 +12,8 @@
       "update_tab": "Error editando pestaña del entorno. Contactá al creador!",
       "save_language": "Error guardando idioma. No se guardará!",
       "fail_app": "Falló la app, Contactá al creador!",
-      "must_have_tabs": "El entorno no tiene pestañas configuradas"
+      "must_have_tabs": "El entorno no tiene pestañas configuradas",
+      "must_select_env_to_open": "Selecciona un entorno para abrir"
     },
     "alert": {
       "env_already_exist": "Ya existe la url en el entorno",
