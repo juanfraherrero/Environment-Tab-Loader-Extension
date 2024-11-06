@@ -28,7 +28,7 @@ export function OptionsPage(): JSX.Element {
    * Load tabs from the environment passed
    */
   const loadPages = useCallback(
-    (env: string) => {
+    (env: string | null) => {
       let loadedPages: string[];
       if (env) {
         loadedPages = environments[env] || [];
@@ -224,7 +224,7 @@ export function OptionsPage(): JSX.Element {
    * When the selected env change reload his tabs
    */
   useEffect(() => {
-    if (selectedEnv) loadPages(selectedEnv);
+    loadPages(selectedEnv);
   }, [loadPages, selectedEnv]); // TODO
 
   /**
@@ -280,6 +280,9 @@ export function OptionsPage(): JSX.Element {
         environments={environments}
         selectedEnv={selectedEnv}
         handleChangeEnvironment={handleChangeEnvironment}
+        handleOpenSettings={() => {
+          setView(View.Settings);
+        }}
       />
 
       <TabsForEnvironmentSection
@@ -289,6 +292,7 @@ export function OptionsPage(): JSX.Element {
         handleDeletePage={handleDeletePage}
         handleEditPage={handleEditPage}
         pages={pages}
+        isSelectedEnv={selectedEnv !== undefined && selectedEnv !== null}
       />
 
       <Toaster />

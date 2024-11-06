@@ -11,7 +11,8 @@
       "delete_tab": "Error while deleting tab from environment. Contact with creator!",
       "update_tab": "Error while updating tab from environment. Contact with creator!",
       "save_language": "Error saving language. It will not be preserved",
-      "fail_app": "Fail app, contact creator"
+      "fail_app": "Fail app, contact creator",
+      "must_have_tabs": "Environment hasn´t loaded tabs"
     },
     "alert": {
       "env_already_exist": "Url already exists in environment",
@@ -29,7 +30,8 @@
       "select_env": "Select environment",
       "new_tab": "URL of new tab",
       "new_env": "New environment",
-      "open": "Open"
+      "open": "Open",
+      "create_env": "Create environment"
     },
     "dialog": {
       "editTab": {

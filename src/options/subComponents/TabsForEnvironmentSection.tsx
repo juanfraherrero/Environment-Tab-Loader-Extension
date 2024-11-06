@@ -22,6 +22,7 @@ interface TabsForEnvironmentSectionProps {
   handleDeletePage: (urlToDelete: string) => void;
   handleEditPage: (urlToDelete: string, newUrl: string) => void;
   pages: string[];
+  isSelectedEnv: boolean;
 }
 
 const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
@@ -31,13 +32,14 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
   handleDeletePage,
   handleEditPage,
   pages,
+  isSelectedEnv,
 }) => {
   const [urlDialog, setUrlDialog] = useState<string>('');
   const { t } = useTranslation();
 
   return (
     <>
-      {pages.length > 0 && (
+      {isSelectedEnv && (
         <div className="w-[70%] mx-auto flex items-center mb-5 ">
           <Input
             type="text"

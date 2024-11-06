@@ -11,7 +11,8 @@
       "delete_tab": "Error borrando pestaña del entorno. Contactá al creador!",
       "update_tab": "Error editando pestaña del entorno. Contactá al creador!",
       "save_language": "Error guardando idioma. No se guardará!",
-      "fail_app": "Falló la app, Contactá al creador!"
+      "fail_app": "Falló la app, Contactá al creador!",
+      "must_have_tabs": "El entorno no tiene pestañas configuradas"
     },
     "alert": {
       "env_already_exist": "Ya existe la url en el entorno",
@@ -29,7 +30,8 @@
       "select_env": "Seleccionar entorno",
       "new_tab": "URL de la nueva pestaña",
       "new_env": "Nuevo entorno",
-      "open": "Abrir"
+      "open": "Abrir",
+      "create_env": "Crear entorno"
     },
     "dialog": {
       "editTab": {
