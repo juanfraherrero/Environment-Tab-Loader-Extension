@@ -55,7 +55,7 @@ export function OptionsPage(): JSX.Element {
    * Adds new env
    */
   const handleAddEnvironment = useCallback(
-    (envName: string) => {
+    (envName: string, onSuccess: () => void) => {
       if (!envName) return;
 
       // Get envs in loweCase
@@ -90,6 +90,7 @@ export function OptionsPage(): JSX.Element {
         }
         // Update local state
         setEnvironments(updatedEnvs);
+        onSuccess();
       });
     },
     [environments, toast, t],
