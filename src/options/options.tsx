@@ -252,12 +252,10 @@ export function OptionsPage(): JSX.Element {
 
         <AddEnvironmentSection handleAddEnvironment={handleAddEnvironment} />
 
-        {Object.keys(environments).length > 0 && (
-          <ListOfEnvs
-            envs={Object.keys(environments)}
-            onDeleteEnv={handleDeleteEnvironment}
-          />
-        )}
+        <ListOfEnvs
+          envs={Object.keys(environments)}
+          onDeleteEnv={handleDeleteEnvironment}
+        />
 
         <Toaster />
       </>
@@ -284,16 +282,14 @@ export function OptionsPage(): JSX.Element {
         handleChangeEnvironment={handleChangeEnvironment}
       />
 
-      {selectedEnv && (
-        <TabsForEnvironmentSection
-          newPageUrl={newPageUrl}
-          setNewPageUrl={setNewPageUrl}
-          handleAddPage={handleAddPage}
-          handleDeletePage={handleDeletePage}
-          handleEditPage={handleEditPage}
-          pages={pages}
-        />
-      )}
+      <TabsForEnvironmentSection
+        newPageUrl={newPageUrl}
+        setNewPageUrl={setNewPageUrl}
+        handleAddPage={handleAddPage}
+        handleDeletePage={handleDeletePage}
+        handleEditPage={handleEditPage}
+        pages={pages}
+      />
 
       <Toaster />
     </>

@@ -37,26 +37,27 @@ const TabsForEnvironmentSection: React.FC<TabsForEnvironmentSectionProps> = ({
 
   return (
     <>
-      <div className="w-[70%] mx-auto flex items-center mb-5 ">
-        <Input
-          type="text"
-          placeholder={t('button.new_tab')}
-          value={newPageUrl}
-          onChange={e => setNewPageUrl(e.target.value)}
-          onKeyUp={e => {
-            if (e.key === 'Enter') handleAddPage();
-          }}
-          className="px-4 py-2 w-full"
-        />
-        <Button
-          type="button"
-          onClick={handleAddPage}
-          className="px-4 py-2 ml-2"
-        >
-          {t('button.add')}
-        </Button>
-      </div>
-
+      {pages.length > 0 && (
+        <div className="w-[70%] mx-auto flex items-center mb-5 ">
+          <Input
+            type="text"
+            placeholder={t('button.new_tab')}
+            value={newPageUrl}
+            onChange={e => setNewPageUrl(e.target.value)}
+            onKeyUp={e => {
+              if (e.key === 'Enter') handleAddPage();
+            }}
+            className="px-4 py-2 w-full"
+          />
+          <Button
+            type="button"
+            onClick={handleAddPage}
+            className="px-4 py-2 ml-2"
+          >
+            {t('button.add')}
+          </Button>
+        </div>
+      )}
       <div
         className=" flex-grow w-full mx-auto overflow-y-auto 
         scrollbar-thin scrollbar-thumb-primary scrollbar-track-transparent 
