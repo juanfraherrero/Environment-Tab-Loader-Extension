@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Toaster } from '@/components/ui/toaster';
 import { useToast } from '@/hooks/use-toast';
 
+import { useSelectedEnv } from './hooks/useSelectedEnv';
 import SelectEnvironmentSection from './subComponents/SelectEnvironmentSection';
 import TabsForEnvironmentSection from './subComponents/TabsForEnvironmentSection';
 import { Environments } from '../types/Environment';
@@ -17,7 +18,7 @@ export function OptionsPage(): JSX.Element {
   const [view, setView] = useState<View>(View.Main); // manage views with state
 
   const [environments, setEnvironments] = useState<Environments>({});
-  const [selectedEnv, setSelectedEnv] = useState<string | null>(null);
+  const { selectedEnv, setSelectedEnv } = useSelectedEnv();
   const [newPageUrl, setNewPageUrl] = useState<string>('');
   const [pages, setPages] = useState<string[]>([]);
 
@@ -47,9 +48,6 @@ export function OptionsPage(): JSX.Element {
     chrome.storage.sync.get(['environments'], result => {
       const loadedEnvs = result.environments || ({} as Environments);
       setEnvironments(loadedEnvs);
-
-      const firstEnv = Object.keys(loadedEnvs).sort()[0];
-      setSelectedEnv(firstEnv);
     });
   }, []);
 
@@ -101,10 +99,10 @@ export function OptionsPage(): JSX.Element {
    * Deletes selected environment
    */
   const handleDeleteEnvironment = useCallback(
-    (selectedEnv: string) => {
-      if (selectedEnv) {
+    (envToDelete: string) => {
+      if (envToDelete) {
         const updatedEnvs = { ...environments };
-        delete updatedEnvs[selectedEnv];
+        delete updatedEnvs[envToDelete];
 
         chrome.storage.sync.set({ environments: updatedEnvs }, () => {
           // loadEnvironments(); // do not fetch to storage
@@ -119,17 +117,12 @@ export function OptionsPage(): JSX.Element {
           // Update local state
           setEnvironments(updatedEnvs);
 
-          // As env was deleted set first env if exist else null
-          const firstEnv = Object.keys(updatedEnvs).sort()[0];
-          if (firstEnv) {
-            setSelectedEnv(firstEnv);
-          } else {
-            setSelectedEnv(null);
-          }
+          // if deleting the same env as selected set it to null
+          if (selectedEnv === envToDelete) setSelectedEnv(null);
         });
       }
     },
-    [environments, toast, t],
+    [environments, toast, t, selectedEnv, setSelectedEnv],
   );
 
   // --- Pages Functions

@@ -13,7 +13,9 @@
       "save_language": "Error saving language. It will not be preserved",
       "fail_app": "Fail app, contact creator",
       "must_have_tabs": "Environment hasn´t loaded tabs",
-      "must_select_env_to_open": "Select environment to open"
+      "must_select_env_to_open": "Select environment to open",
+      "saving_selected_env": "Error saving selected environment, Contact with creator!",
+      "loading_selected_env": "Error loading selected environment, Contact with creator!"
     },
     "alert": {
       "env_already_exist": "Url already exists in environment",

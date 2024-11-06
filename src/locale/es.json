@@ -13,7 +13,9 @@
       "save_language": "Error guardando idioma. No se guardará!",
       "fail_app": "Falló la app, Contactá al creador!",
       "must_have_tabs": "El entorno no tiene pestañas configuradas",
-      "must_select_env_to_open": "Selecciona un entorno para abrir"
+      "must_select_env_to_open": "Selecciona un entorno para abrir",
+      "saving_selected_env": "Error guardando el entorno seleccionado, Contactá al creador!",
+      "loading_selected_env": "Error cargando el entorno seleccionado, Contactá al creador!"
     },
     "alert": {
       "env_already_exist": "Ya existe la url en el entorno",
