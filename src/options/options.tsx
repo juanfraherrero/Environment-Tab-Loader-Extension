@@ -11,6 +11,7 @@ import SelectEnvironmentSection from './subComponents/SelectEnvironmentSection';
 import TabsForEnvironmentSection from './subComponents/TabsForEnvironmentSection';
 import { Environments } from '../types/Environment';
 import AddEnvironmentSection from './subComponents/AddEnviromentsSection';
+import { HelpPopOver } from './subComponents/HelpPopover';
 import { ListOfEnvs } from './subComponents/ListOfEnvs';
 import { View } from './types/View';
 
@@ -265,6 +266,8 @@ export function OptionsPage(): JSX.Element {
       >
         <Settings className="h-[1.2rem] w-[1.2rem]" />
       </Button>
+
+      <HelpPopOver />
 
       <h1 className="text-center mt-10 mb-10 scroll-m-20 text-2xl font-semibold italic tracking-tight">
         {t('title')}

@@ -58,6 +58,10 @@
         "description": "Are you sure to delete environment {{env}}?"
       }
     },
-    "popup_title": "Select Environment"
+    "popup_title": "Select Environment",
+    "help": {
+      "init_title": "¿What is ",
+      "app_description": "This App allows you to configure and open different work environments, each with a specific set of tabs. You can open a new window with the corresponding environment tabs and also you have the option to clear all tabs and load only the ones from the selected environment."
+    }
   }
 }

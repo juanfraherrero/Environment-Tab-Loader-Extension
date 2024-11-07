@@ -58,6 +58,10 @@
         "description": "Estás seguro de borrar el entorno {{env}}?"
       }
     },
-    "popup_title": "Seleccionar Entorno"
+    "popup_title": "Seleccionar Entorno",
+    "help": {
+      "init_title": "¿Qué es ",
+      "app_description": "Esta aplicación te permite abrir diferentes entornos de trabajo. Cada uno tiene un conjunto de pestañas. Podes abrir una nueva ventana con las pestañas del entorno seleccionado, o podes borrar todas las pestañas y abrir solamente las pestañas del entorno seleccionado."
+    }
   }
 }
