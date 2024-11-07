@@ -38,6 +38,27 @@ export function OpenEnvDialog({
       <DialogContent className="w-[80vw]">
         <DialogTitle>{t('dialog.openEnvTitle')}</DialogTitle>
         <DialogDescription>{t('dialog.openEnvDescription')}</DialogDescription>
+        <DialogDescription className="text-xs">
+          {t('dialog.openEnvShortcuts.description')}
+          <ul>
+            <li>
+              <b>windows</b>:{' '}
+              <code className="italic">
+                {t('dialog.openEnvShortcuts.windows')}
+              </code>
+            </li>
+            <li>
+              <b>mac</b>:{' '}
+              <code className="italic">{t('dialog.openEnvShortcuts.mac')}</code>
+            </li>
+            <li>
+              <b>linux</b>:{' '}
+              <code className="italic">
+                {t('dialog.openEnvShortcuts.linux')}
+              </code>
+            </li>
+          </ul>
+        </DialogDescription>
         <DialogFooter>
           <Button variant="outline" onClick={onOpenEnvDiscardTabs}>
             {t('dialog.openEnv.discardTabs')}

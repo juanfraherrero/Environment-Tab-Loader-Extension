@@ -43,6 +43,12 @@
       },
       "openEnvTitle": "Open Environment",
       "openEnvDescription": "Select if open environment and keep other tabs, or open environment and delete other tabs",
+      "openEnvShortcuts": {
+        "description": "Open environments with shortcuts (1 keeps other tabs y 0 deletes other tabs):",
+        "windows": "Alt+Shift+1 | Alt+Shift+0",
+        "linux": "Ctrl+Shift+1 | Ctrl+Shift+0",
+        "mac": "Command+Shift+1 | Command+Shift+0"
+      },
       "openEnv": {
         "keepTabs": "Keep other tabs",
         "discardTabs": "Delete other tabs"

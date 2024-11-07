@@ -43,6 +43,12 @@
       },
       "openEnvTitle": "Abrir Entorno",
       "openEnvDescription": "Seleccioná si queres abrir el entorno y mantener las otras pestañas o si querés borrar las otras pestañas abiertas",
+      "openEnvShortcuts": {
+        "description": "Podes abrir los entornos con atajos de teclado (1 mantiene las otras pestañas y 0 borra las otras pestañas abiertas):",
+        "windows": "Alt+Shift+1 | Alt+Shift+0",
+        "linux": "Ctrl+Shift+1 | Ctrl+Shift+0",
+        "mac": "Command+Shift+1 | Command+Shift+0"
+      },
       "openEnv": {
         "keepTabs": "Mantener las otras pestañas",
         "discardTabs": "Borrar las otras pestañas"
