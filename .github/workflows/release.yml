@@ -1,0 +1,38 @@
+name: Build and release extension
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    name: Build and release extension
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' # Only tags from master
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.17'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Version Dependencies
+        run: npm ls
+
+      - name: Build the extension
+        run: npm run build:l
+
+      - name: Create zip file for dist folder
+        run: zip -r extension-release.zip dist
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: extension-release.zip
