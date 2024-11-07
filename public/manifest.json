@@ -1,13 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Environments configure",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Configure your enviroments, load a new window with the specified tabs of your environment. Also clear all tabs and windows and load only a windows with the tabs of your environment",
-  "permissions": [
-    "storage",
-    "tabs",
-    "scripting"
-  ],
+  "permissions": ["storage", "tabs", "scripting"],
   "background": {
     "service_worker": "background.js"
   },
@@ -56,9 +52,7 @@
         "options.css",
         "assets/*.js"
       ],
-      "matches": [
-        "<all_urls>"
-      ]
+      "matches": ["<all_urls>"]
     }
   ]
 }
