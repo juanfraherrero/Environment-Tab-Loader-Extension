@@ -25,7 +25,7 @@ export function HelpPopOver(): JSX.Element {
           {t('help.init_title')}
           <span className="italic">{t('title')}</span>?
         </h4>
-        <p className="text-sm text-gray-700 mb-2">
+        <p className="text-sm mb-2 tracking-tight">
           {t('help.app_description')}
         </p>
         <div className="text-xs">
