@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.1.0](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/compare/v0.0.4...v1.1.0) (2024-11-07)
+
+
+### Features
+
+* add help button to extensión and shortcuts when opening envs ([96cbc57](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/commit/96cbc57ddfeab688191b1e67df1f4b1826dc6753))
+* add shortcut advice when open env ([9a68bfd](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/commit/9a68bfdce888ad0516fb307e1b536311c718779d))
+* **workflow ci:** add build and release automatic ([30596aa](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/commit/30596aa533c51eaef79b1668394e783aa731a311))
+
 ## [0.0.4](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/compare/v0.0.3...v0.0.4) (2024-11-06)
 
 
