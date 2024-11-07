@@ -9,7 +9,6 @@ jobs:
   build:
     name: Build and release extension
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' # Only tags from master
 
     steps:
       - name: Checkout repository
@@ -36,3 +35,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: extension-release.zip
+          token: ${{ secrets.GH_CI_TOKEN }}

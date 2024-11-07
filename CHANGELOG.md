@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.1.1](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/compare/v1.1.0...v1.1.1) (2024-11-07)
+
+
+### Bug Fixes
+
+* **ci:** release from every tag ([bb52d4a](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/commit/bb52d4a3752c8b32193bd1e170f1c030d7f55fde))
+
 ## [1.1.0](https://github.com/juanfraherrero/Environment-Tab-Loader-Extension/compare/v0.0.4...v1.1.0) (2024-11-07)
 
 
