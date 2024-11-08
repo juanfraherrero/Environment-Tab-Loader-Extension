@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Your Environments",
   "version": "1.0.0",
-  "description": "Configure your enviroments, load a new window with the specified tabs of your environment. Also clear all tabs and windows and load only a windows with the tabs of your environment",
+  "description": "Loads new windows with specific tabs. Clear all existing tabs and open only the new window or avoiding clearing existing tabs",
   "permissions": ["storage", "tabs", "scripting"],
   "background": {
     "service_worker": "background.js"
