@@ -3,7 +3,7 @@
   "name": "Your Environments",
   "version": "1.0.0",
   "description": "Loads new windows with specific tabs. Clear all existing tabs and open only the new window or avoiding clearing existing tabs",
-  "permissions": ["storage", "tabs", "scripting"],
+  "permissions": ["storage"],
   "background": {
     "service_worker": "background.js"
   },
